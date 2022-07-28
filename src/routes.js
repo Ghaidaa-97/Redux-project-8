@@ -9,6 +9,9 @@ import Contact from "./pages/Contact";
 //import your components here (if you have any)
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import SignUp from "./pages/SignUp";
+import NotFound from "./pages/NotFound";
+import Signin from "./pages/Signin";
 
 //import your css here (if you have any)
 //import '../css/main.css';
@@ -18,15 +21,18 @@ export default function AppRoutes() {
     return (
         <Router> {/* <Router> is a component that wraps your entire app.*/}
 
-
+            <Nav /> {/* <Nav> is a component that renders the navigation bar.*/}
             <Routes> {/* <Routes> is a component that renders your routes.*/}
                 {/* add your routes here  */}
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/sign-in" element={<Signin />} />
 
+                <Route path='*' element={<NotFound />} />
             </Routes>
-
+            <Footer /> {/* <Footer> is a component that renders the footer.*/}
 
 
         </Router>

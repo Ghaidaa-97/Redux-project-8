@@ -2,11 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-const initialState = {
-    data: [],
-    loading: false,
-    error: null
-}
 
 export const getData = createAsyncThunk(
     "dataSlice/getData",
@@ -16,6 +11,11 @@ export const getData = createAsyncThunk(
         return response.data;
     });
 
+const initialState = {
+    data: [],
+    loading: false,
+    error: null
+}
 const dataSlice = createSlice({
     name: "data",
     initialState,
