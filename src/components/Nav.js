@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import '../css/main.css';
 export default function Nav() {
+    const handelClick = () => {
+
+    }
     return (
 
         <header class="header-section">
@@ -13,7 +16,7 @@ export default function Nav() {
                     </div>
                     <ul class="menu">
                         <li>
-                            <NavLink to="/">Home</NavLink>
+                            <NavLink to="/" onClick={handelClick} >Home</NavLink>
                         </li>
                         <li>
                             <NavLink to="/About">About Us</NavLink>
