@@ -13,28 +13,21 @@ import Footer from "./components/Footer";
 //import your css here (if you have any)
 //import '../css/main.css';
 
-//import your hooks here (if you have any)
-import useAppContext, { AppContext } from "./Hooks/appContext";
 
 export default function AppRoutes() {
     return (
         <Router> {/* <Router> is a component that wraps your entire app.*/}
 
-            <Nav /> {/* <Nav> is a component that renders the nav bar.*/}
 
-            <AppContext.Provider value={{ name: 'abood kh' }}> {/* <AppContext.Provider> is a component that provides the context for your app.*/}
+            <Routes> {/* <Routes> is a component that renders your routes.*/}
+                {/* add your routes here  */}
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
 
-                <Routes> {/* <Routes> is a component that renders your routes.*/}
-                    {/* add your routes here  */}
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
+            </Routes>
 
-                </Routes>
 
-            </AppContext.Provider>
-
-            <Footer />  {/* <Footer> is a component that renders the footer.*/}
 
         </Router>
 

@@ -1,4 +1,16 @@
+import { getData } from "../store/dataSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
+
 export default function About() {
+    const state = useSelector(state => state);
+
+    const dispatch = useDispatch();
+    dispatch(getData());
+    useEffect(() => {
+        console.log(state.data);
+    }, [state.loading]);
     return (
         <div className="container">
             <h1>About</h1>
