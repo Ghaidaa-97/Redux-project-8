@@ -2,7 +2,7 @@ export default function Footer() {
 
     return (
         <footer className="footer-section">
-            <div className="newslater-section padding-bottom">
+            {/* <div className="newslater-section padding-bottom">
                 <div className="container">
                     <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
                         <div className="newslater-wrapper">
@@ -16,7 +16,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="container">
                 <div className="footer-top">
                     <div className="logo">

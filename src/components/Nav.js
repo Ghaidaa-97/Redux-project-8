@@ -16,7 +16,10 @@ export default function Nav() {
                     </div>
                     <ul class="menu">
                         <li>
-                            <NavLink to="/" onClick={handelClick} >Home</NavLink>
+                            <NavLink to="/"  >Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/blog"  >Blog</NavLink>
                         </li>
                         <li>
                             <NavLink to="/About">About Us</NavLink>

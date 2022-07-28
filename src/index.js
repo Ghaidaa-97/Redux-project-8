@@ -7,14 +7,20 @@ import { Helmet } from 'react-helmet';
 
 const root = ReactDOM.createRoot(document.getElementsByTagName('body')[0]);
 
+
 root.render(
-  <Provider store={store}>
+  <>
 
 
 
-    <AppRoutes />
-    <Helmet>
+    <Provider store={store}>
 
-    </Helmet>
-  </Provider>
+
+
+      <AppRoutes />
+      <Helmet>
+
+      </Helmet>
+    </Provider>
+  </>
 );
