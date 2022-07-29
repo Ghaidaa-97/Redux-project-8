@@ -20,7 +20,12 @@ class PostController extends Controller
         $posts = Post::join('users' , 'users.id' , '=' , 'posts.user_id')
             ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
             ->orderBy('posts.created_at' , 'desc')
-            ->paginate(10);
+            ->paginate(6);
+            foreach ($posts as $post) {
+
+                $post->comments_count= comment::where('post_id' , $post->id)->count();
+            }
+
         return response()->json($posts);
     }
 
@@ -97,8 +102,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        comment::where('post_id' , $id)->delete();
         $post = Post::find($id);
         $post->delete();
+
         return response()->json($post);
     }
 }

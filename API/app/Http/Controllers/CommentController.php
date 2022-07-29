@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\comment;
+use App\Models\post;
 use Validator;
 class CommentController extends Controller
 {
@@ -36,8 +37,18 @@ class CommentController extends Controller
         }
 
         $comment = comment::create($request->all());
+        $post = post::join('users' , 'users.id' , '=' , 'posts.user_id')
+        ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
+        ->where('posts.id' ,$request->post_id) ->first();
+    $post_comments =comment::join('users' , 'users.id' , '=' , 'comments.user_id')
+        ->select('comments.*' , 'users.name' , 'users.email' , 'users.image')
+        ->where('post_id' , $request->post_id)
+        ->orderBy('comments.created_at' , 'desc')
+        ->get();
 
-        return response()->json($comment, 201);
+        $post->comments = $post_comments;
+    return response()->json($post,201);
+
     }
 
     /**
