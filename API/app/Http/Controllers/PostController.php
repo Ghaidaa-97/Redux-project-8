@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use Validator;
+use App\Models\comment;
 
+use Validator;
 
 class PostController extends Controller
 {
@@ -16,7 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::join('users' , 'users.id' , '=' , 'posts.user_id')
+            ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
+            ->orderBy('posts.created_at' , 'desc')
+            ->paginate(10);
         return response()->json($posts);
     }
 
@@ -48,7 +52,16 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::find($id)->join('users' , 'users.id' , '=' , 'posts.user_id')
+            ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
+            ->first();
+        $post_comments =comment::join('users' , 'users.id' , '=' , 'comments.user_id')
+            ->select('comments.*' , 'users.name' , 'users.email' , 'users.image')
+            ->where('post_id' , $id)
+            ->orderBy('comments.created_at' , 'desc')
+            ->get();
+
+            $post->comments = $post_comments;
         return response()->json($post);
     }
 
