@@ -52,9 +52,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id)->join('users' , 'users.id' , '=' , 'posts.user_id')
+        $post = Post::join('users' , 'users.id' , '=' , 'posts.user_id')
             ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
-            ->first();
+            ->where('posts.id' , $id) ->first();
         $post_comments =comment::join('users' , 'users.id' , '=' , 'comments.user_id')
             ->select('comments.*' , 'users.name' , 'users.email' , 'users.image')
             ->where('post_id' , $id)
