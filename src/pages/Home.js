@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { useState } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovies, addMovie } from '../store/MoviesSlice';
+
 
 function Home() {
-  const [movies, setMovies] = useState([]);
-
+  const dispatch = useDispatch();
+  const movies = useSelector(state => state.movies.movies);
   useEffect(() => {
-    axios.get('http://localhost:8000/api/movies')
-      .then(res => setMovies(res.data))
-      .catch(err => console.log(err));
-    console.log(movies);
+    dispatch(getMovies());
 
   }, []);
 
