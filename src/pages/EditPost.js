@@ -1,22 +1,26 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addPost, getPosts } from "../store/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { editPost, getPosts } from "../store/postSlice";
 import { useNavigate } from "react-router-dom";
-export default function Addpost() {
-    const [post, setPost] = useState({ title: '', content: '', user_id: 1 });
+export default function EditPost() {
+    const Post = useSelector(state => state.posts.post);
+    const [post, setPost] = useState({ id: Post.id, title: Post.title, content: Post.content, user_id: Post.user_id });
     const dispatch = useDispatch();
     const GoTo = useNavigate();
+
     window.scroll(0, 0);
     const handelChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
     }
     const handelSubmit = (e) => {
         e.preventDefault();
-        dispatch(addPost(post));
-        dispatch(getPosts(1));
+        console.log(Post.id);
+        dispatch(editPost(post));
+
+
         GoTo("/blog_detail");
     }
-    console.log(post);
+    console.log(Post);
     return (
         <section className="blog-section padding-top padding-bottom">
             <div className="container">

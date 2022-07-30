@@ -36,7 +36,7 @@ export const editPost = createAsyncThunk(
     "post/editPost",
     async (post, thunkAPI) => {
         const response = await axios.put("http://localhost:8000/api/posts/" + post.id, post);
-        console.log(response.data);
+        console.log(response);
 
         return response.data;
     })
@@ -62,10 +62,26 @@ export const addComment = createAsyncThunk(
     }
 )
 
+export const editComment = createAsyncThunk(
+    "post/editComment",
+    async (comment, thunkAPI) => {
+        const response = await axios.put("http://localhost:8000/api/comments/" + comment.id, comment);
+        console.log(response);
+        thunkAPI.dispatch(getPost(comment.post_id));
+        return response.data;
+    }
+)
 
+export const deleteComment = createAsyncThunk("post/deleteComment",
+
+    async (id, thunkAPI) => {
+        const response = await axios.delete("http://localhost:8000/api/comments/" + id);
+        console.log(response.data);
+    })
 
 const initialState = {
     posts: [],
+    message: "",
     page: 1,
     lastPage: 1,
     loading: false,
@@ -164,7 +180,7 @@ const postSlice = createSlice({
         }
         ,
         [deletePost.fulfilled]: (state, action) => {
-            state.post = action.payload;
+            state.posts = action.payload;
             state.loading = false;
         }
         ,
@@ -187,9 +203,36 @@ const postSlice = createSlice({
             state.error = action.error;
             state.loading = false;
         }
-
-
-
+        ,
+        // editComment reducer for editComment action
+        [editComment.pending]: (state, action) => {
+            state.loading = true;
+        }
+        ,
+        [editComment.fulfilled]: (state, action) => {
+            state.message = action.payload;
+            state.loading = false;
+        }
+        ,
+        [editComment.rejected]: (state, action) => {
+            state.error = action.error;
+            state.loading = false;
+        }
+        ,
+        // deleteComment reducer for deleteComment action
+        [deleteComment.pending]: (state, action) => {
+            state.loading = true;
+        }
+        ,
+        [deleteComment.fulfilled]: (state, action) => {
+            state.message = action.payload;
+            state.loading = false;
+        }
+        ,
+        [deleteComment.rejected]: (state, action) => {
+            state.error = action.error;
+            state.loading = false;
+        }
     }
 
 });

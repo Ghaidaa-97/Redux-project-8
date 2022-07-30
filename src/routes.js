@@ -16,6 +16,7 @@ import Blog_detail from "./pages/Blog_detail";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AddPost from "./pages/AddPost";
+import EditPost from "./pages/EditPost";
 
 //import your css here (if you have any)
 //import '../css/main.css';
@@ -37,6 +38,7 @@ export default function AppRoutes() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog_detail" element={<Blog_detail />} />
                 <Route path="/add_post" element={<AddPost />} />
+                <Route path="/edit_post" element={<EditPost />} />
 
                 <Route path='*' element={<NotFound />} />
             </Routes>

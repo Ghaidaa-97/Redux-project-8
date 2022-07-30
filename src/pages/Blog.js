@@ -11,6 +11,7 @@ export default function () {
 
     const handelClick = (e, post_id) => {
         e.preventDefault();
+        alert(post_id);
         dispatch(getPost(post_id));
         GoTo("/blog_detail")
     }
@@ -34,6 +35,9 @@ export default function () {
         dispatch(getPosts(page));
         window.scrollTo(20, 390)
     }, [page]);
+    useEffect(() => {
+        dispatch(getPosts(page));
+    }, [])
 
     return (
         <>

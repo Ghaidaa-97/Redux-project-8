@@ -46,6 +46,7 @@ class PostController extends Controller
             return response()->json($validator->errors(), 400);
         }
         $post = Post::create($request->all());
+        $post->comments= [];
         return response()->json($post , 201);
     }
 
@@ -81,7 +82,7 @@ class PostController extends Controller
     {
         $validator = Validator::make($request->all(), [
         'title' => 'required|string|max:255',
-        'body' => 'required|string',
+        'content' => 'required|string',
         'user_id' => 'required|integer',
         ]);
 
@@ -91,8 +92,17 @@ class PostController extends Controller
 
         $post = Post::find($id);
         $post->update($request->all());
-        return response()->json($post);
-    }
+        $post = Post::join('users' , 'users.id' , '=' , 'posts.user_id')
+            ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
+            ->where('posts.id' , $id) ->first();
+        $post_comments =comment::join('users' , 'users.id' , '=' , 'comments.user_id')
+            ->select('comments.*' , 'users.name' , 'users.email' , 'users.image')
+            ->where('post_id' , $id)
+            ->orderBy('comments.created_at' , 'desc')
+            ->get();
+
+            $post->comments = $post_comments;
+        return response()->json($post);    }
 
     /**
      * Remove the specified resource from storage.
@@ -105,7 +115,15 @@ class PostController extends Controller
         comment::where('post_id' , $id)->delete();
         $post = Post::find($id);
         $post->delete();
+        $post = Post::join('users' , 'users.id' , '=' , 'posts.user_id')
+            ->select('posts.*' , 'users.name' , 'users.email' , 'users.image')
+            ->orderBy('posts.created_at' , 'desc')
+            ->paginate(6);
 
-        return response()->json($post);
+            foreach ($post as $post) {
+                $post->comments_count= comment::where('post_id' , $post->id)->count();
+            }
+
+        return response()->json([$post]);
     }
 }
