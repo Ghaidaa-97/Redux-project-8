@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import '../css/main.css';
-
+import { useState } from 'react';
+import axios from 'axios';
 
 function Home() {
+  const [movies, setMovies] = useState([]);
 
-  useEffect(
-    () => {
-      console.log('Home');
-    }
-    , []);
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/movies')
+      .then(res => setMovies(res.data))
+      .catch(err => console.log(err));
+    console.log(movies);
+
+  }, []);
 
   return (
     <>
@@ -32,6 +35,7 @@ function Home() {
 
 
 
+
       <section className="banner-section">
         <div className="banner-bg bg_img bg-fixed" data-background="./assets/images/banner/banner01.jpg"></div>
         <div className="container">
@@ -43,6 +47,7 @@ function Home() {
                 <b>Sport</b>
               </span>
             </h1>
+
             <p>Safe, secure, reliable ticketing.Your ticket to live entertainment!</p>
           </div>
         </div>
@@ -239,7 +244,14 @@ function Home() {
         </div>
       </section>
 
-
+      {movies.map((movie) => {
+        return (
+          <div key={movie.id}>
+            <h1>{movie.title}</h1>
+            <p>{movie.description}</p>
+          </div>
+        )
+      })}
 
       <section className="movie-section padding-top padding-bottom">
         <div className="container">
@@ -271,6 +283,8 @@ function Home() {
                           <img src="./assets/images/movie/movie01.jpg" alt="movie" />
                         </a>
                       </div>
+
+
                       <div className="movie-content bg-one">
                         <h5 className="title m-0">
                           <a href="#0">alone</a>
@@ -290,6 +304,8 @@ function Home() {
                           </li>
                         </ul>
                       </div>
+
+
                     </div>
                   </div>
                   <div className="item">
