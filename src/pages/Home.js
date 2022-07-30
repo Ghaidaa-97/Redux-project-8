@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import '../css/main.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovies, addMovie } from '../store/MoviesSlice';
 
 
 function Home() {
+  const dispatch = useDispatch();
+  const movies = useSelector(state => state.movies.movies);
+  useEffect(() => {
+    dispatch(getMovies());
 
-  useEffect(
-    () => {
-      console.log('Home');
-    }
-    , []);
+  }, []);
 
   return (
     <>
@@ -32,6 +33,7 @@ function Home() {
 
 
 
+
       <section className="banner-section">
         <div className="banner-bg bg_img bg-fixed" data-background="./assets/images/banner/home.jfif"></div>
         <div className="container">
@@ -43,6 +45,7 @@ function Home() {
                 <b>Sport</b>
               </span>
             </h1>
+
             <p>Safe, secure, reliable ticketing.Your ticket to live entertainment!</p>
           </div>
         </div>
@@ -239,7 +242,14 @@ function Home() {
         </div>
       </section>
 
-
+      {movies.map((movie) => {
+        return (
+          <div key={movie.id}>
+            <h1>{movie.title}</h1>
+            <p>{movie.description}</p>
+          </div>
+        )
+      })}
 
       <section className="movie-section padding-top padding-bottom">
         <div className="container">
@@ -271,6 +281,8 @@ function Home() {
                           <img src="./assets/images/movie/movie01.jpg" alt="movie" />
                         </a>
                       </div>
+
+
                       <div className="movie-content bg-one">
                         <h5 className="title m-0">
                           <a href="#0">alone</a>
@@ -290,6 +302,8 @@ function Home() {
                           </li>
                         </ul>
                       </div>
+
+
                     </div>
                   </div>
                   <div className="item">

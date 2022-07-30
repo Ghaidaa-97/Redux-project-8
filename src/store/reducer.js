@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import dataReducer from "./dataSlice";
+import moviesReducer from "./MoviesSlice";
 import postReducer from "./postSlice";
 const allReducers = combineReducers({
-    data: dataReducer,
+    movies: moviesReducer,
     posts: postReducer,
 });
 export default allReducers;

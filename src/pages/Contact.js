@@ -1,6 +1,25 @@
 import { Helmet } from "react-helmet";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Contact() {
+
+    const [contact, setContact] = useState({ name: "", email: "", message: "" });
+
+    const handelSubmit = (e) => {
+        e.preventDefault();
+        console.log(contact);
+        axios.post("http://localhost:8000/api/contact", contact).then(
+            (res) => {
+                console.log(res);
+                setContact({ name: "", email: "", message: "" });
+            }
+        ).catch((err) => {
+            console.log(err);
+            alert('Error sending message');
+        })
+
+    }
     return (
         <>
 
@@ -34,22 +53,21 @@ export default function Contact() {
                                         <h2 class="title">get in touch</h2>
                                         <p>We’d love to talk about how we can work together. Send us a message below and we’ll respond as soon as possible.</p>
                                     </div>
-                                    <form class="contact-form" id="contact_form_submit">
+                                    <form class="contact-form" id="contact_form_submit" onSubmit={handelSubmit} >
                                         <div class="form-group">
+
                                             <label for="name">Name <span>*</span></label>
-                                            <input type="text" placeholder="Enter Your Full Name" name="name" id="name" required />
+                                            <input type="text" placeholder="Enter Your Full Name" onChange={(e) => { setContact({ ...contact, name: e.target.value }) }} value={contact.name} name="name" id="name" required />
+
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email <span>*</span></label>
-                                            <input type="text" placeholder="Enter Your Email" name="email" id="email" required />
+                                            <input type="text" placeholder="Enter Your Email" onChange={(e) => { setContact({ ...contact, email: e.target.value }) }} value={contact.email} name="email" id="email" required />
                                         </div>
-                                        <div class="form-group">
-                                            <label for="subject">Subject <span>*</span></label>
-                                            <input type="text" placeholder="Enter Your Subject" name="subject" id="subject" required />
-                                        </div>
+
                                         <div class="form-group">
                                             <label for="message">Message <span>*</span></label>
-                                            <textarea name="message" id="message" placeholder="Enter Your Message" required ></textarea>
+                                            <textarea name="message" id="message" placeholder="Enter Your Message" onChange={(e) => { setContact({ ...contact, message: e.target.value }) }} value={contact.message} required ></textarea>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Send Message" />

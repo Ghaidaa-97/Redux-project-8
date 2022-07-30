@@ -27,11 +27,9 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'release_date' => 'required|date',
-            'image' => 'required|string|max:255',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'release_date' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
