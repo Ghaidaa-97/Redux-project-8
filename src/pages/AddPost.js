@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addPost } from "../store/postSlice";
+import { addPost, getPosts } from "../store/postSlice";
 import { useNavigate } from "react-router-dom";
 export default function Addpost() {
     const [post, setPost] = useState({ title: '', content: '', user_id: 1 });
     const dispatch = useDispatch();
     const GoTo = useNavigate();
+    window.scroll(0, 0);
     const handelChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
     }
     const handelSubmit = (e) => {
         e.preventDefault();
         dispatch(addPost(post));
+        dispatch(getPosts(1));
         GoTo("/blog");
     }
     console.log(post);
@@ -45,7 +47,6 @@ export default function Addpost() {
                                             <p>
                                                 {post.content}
                                             </p>
-
                                         </div>
                                     </div>
                                 </div>

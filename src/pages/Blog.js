@@ -12,12 +12,12 @@ export default function () {
     const handelClick = (e, post_id) => {
         e.preventDefault();
         dispatch(getPost(post_id));
-        alert("Post id: " + post_id);
         GoTo("/blog_detail")
     }
 
 
     const posts = useSelector((state) => state.posts.posts);
+    const loading = useSelector((state) => state.posts.loading);
 
     const state = useSelector((state) => state);
 
@@ -38,6 +38,14 @@ export default function () {
     return (
         <>
             <section className="main-page-header speaker-banner bg_img" data-background="./assets/images/banner/banner07.jpg">
+                {loading ? <div className="preloader">
+                    <div className="preloader-inner">
+                        <div className="preloader-icon">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div> : null}
                 <div className="container">
                     <div className="speaker-banner-content">
                         <h2 className="title">blog - 01</h2>
@@ -58,27 +66,40 @@ export default function () {
                             <article>
                                 {posts.map((post) => (
                                     <div className="post-item" key={post.id}>
-                                        <div className="post-thumb">
-                                            {post.image != null ? <a href="blog-details.html">
-                                                <img src="./assets/images/blog/blog01.jpg" alt="blog" />
-                                            </a> : null}
+                                        <div className="post-item post-details">
+                                            <div className="post-thumb">
+                                                {post.image ?
+                                                    <img src={'' + post.image} alt="blog" /> : null}
+                                            </div>
+                                            <div className="blog-author">
+                                                <div className="author-thumb">
+                                                    <a href="#0">
+                                                        <img src="./assets/images/blog/author.jpg" alt="blog" />
+                                                    </a>
+                                                </div>
+                                                <div className="author-content">
+                                                    <h6 className="title">
+                                                        <a href="#0">
+                                                            {post.name}
+                                                        </a>
+                                                    </h6>
+                                                    <div className="post-header">
+                                                        <h4 className="m-title mb-3 mt-1">
+                                                            {post.title}
+                                                        </h4>
+                                                        <p className="mt-5">
+                                                            {post.content}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </div>
                                         <div className="post-content">
-                                            <div className="post-header">
-                                                <h4 className="title">
-                                                    <a href="blog-details.html">
-                                                        {post.title}
-                                                    </a>
-                                                </h4>
-                                                <div className="meta-post">
-                                                    <a href="#0" className="mr-4"><i className="flaticon-conversation"></i>20 Comments</a>
-                                                    <a href="#0"><i className="flaticon-view"></i>466 View</a>
-                                                </div>
-                                                <p>
-                                                    {post.content}
-                                                </p>
-                                            </div>
+
+
+
+
                                             <div className="entry-content">
                                                 <div className="left">
                                                     <span className="date">
@@ -88,13 +109,14 @@ export default function () {
 
                                                         }
                                                     </span>
-                                                    <div className="authors">
-                                                        <div className="thumb">
-                                                            <a href="#0"><img src="./assets/images/blog/author.jpg" alt="#0" /></a>
-                                                        </div>
-                                                        <h6 className="title"><a href="#0">{post.name}</a></h6>
-                                                    </div>
+
                                                 </div>
+
+                                                <div className="meta-post">
+                                                    <a className="mr-4"><i className="flaticon-conversation"></i>{post.comments_count} Comments</a>
+
+                                                </div>
+
                                                 <a href="" className="buttons" onClick={(e) => {
 
                                                     handelClick(e, post.id)
@@ -143,7 +165,10 @@ export default function () {
                                     <h5 className="title">Share your opinion or your question with us  </h5>
 
 
-                                    <button type="submit"><i className="fab fab-school"></i> Add your post now  </button>
+                                    <button type="submit" onClick={(e) => {
+                                        e.preventDefault();
+                                        GoTo("/add_post")
+                                    }}><i className="fab fab-school"></i> Add your post now  </button>
 
                                 </div>
 

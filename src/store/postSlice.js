@@ -27,7 +27,7 @@ export const addPost = createAsyncThunk(
     async (post, thunkAPI) => {
         const response = await axios.post("http://localhost:8000/api/posts", post);
         console.log(response.data);
-        thunkAPI.dispatch(getPosts(1));
+
         return response.data;
     })
 
@@ -37,7 +37,7 @@ export const editPost = createAsyncThunk(
     async (post, thunkAPI) => {
         const response = await axios.put("http://localhost:8000/api/posts/" + post.id, post);
         console.log(response.data);
-        thunkAPI.dispatch(getPosts(1));
+
         return response.data;
     })
 
@@ -46,10 +46,23 @@ export const deletePost = createAsyncThunk(
     async (id, thunkAPI) => {
         const response = await axios.delete("http://localhost:8000/api/posts/" + id);
         console.log(response.data);
-        thunkAPI.dispatch(getPosts(1));
+
         return response.data;
     }
 )
+
+export const addComment = createAsyncThunk(
+    "post/addComment",
+    async (comment, thunkAPI) => {
+        const response = await axios.post("http://localhost:8000/api/comments", comment);
+        console.log(response);
+
+        thunkAPI.dispatch(getPost(comment.post_id));
+        return response.data;
+    }
+)
+
+
 
 const initialState = {
     posts: [],
@@ -156,6 +169,21 @@ const postSlice = createSlice({
         }
         ,
         [deletePost.rejected]: (state, action) => {
+            state.error = action.error;
+            state.loading = false;
+        }
+        ,
+        // addComment reducer for addComment action
+        [addComment.pending]: (state, action) => {
+            state.loading = true;
+        }
+        ,
+        [addComment.fulfilled]: (state, action) => {
+            state.post = action.payload;
+            state.loading = false;
+        }
+        ,
+        [addComment.rejected]: (state, action) => {
             state.error = action.error;
             state.loading = false;
         }

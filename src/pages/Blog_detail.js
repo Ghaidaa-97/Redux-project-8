@@ -1,11 +1,40 @@
-import { useSelector } from "react-redux";
 
-
-export default function Blog() {
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addComment, deletePost } from "../store/postSlice";
+import { useNavigate } from "react-router-dom";
+export default function Blog_detail() {
+    const dispatch = useDispatch();
+    const GoTo = useNavigate();
     const post = useSelector((state) => state.posts.post);
-    console.log(post);
+    const loading = useSelector((state) => state.posts.loading);
+    const [comment, setComment] = useState({ user_id: "1", post_id: post.id, message: "" });
+    const handelSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addComment(comment));
+        setComment({ user_id: "1", post_id: post.id, message: "" });
+        window.scrollTo(20, 160)
+    }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
+        console.log(comment);
+
+    }
+        , [comment])
     return (
         <section className="blog-section padding-top padding-bottom">
+            {loading ? <div className="preloader">
+                <div className="preloader-inner">
+                    <div className="preloader-icon">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div> : null}
             <div className="container">
                 <div className="row justify-content-center mb-30-none">
                     <div className="col-lg-8 mb-50 mb-lg-0">
@@ -34,7 +63,24 @@ export default function Blog() {
                                             <p>
                                                 {post.content}
                                             </p>
+                                            <div className="row">
+                                                <a>
 
+                                                    <button onClick={(e) => {
+                                                        e.preventDefault();
+                                                        dispatch(deletePost(post.id));
+                                                        GoTo("/blog")
+                                                    }} className="bg-danger" >Delete Post </button>
+                                                </a>
+                                                <a>
+
+                                                    <button onClick={(e) => {
+                                                        e.preventDefault();
+                                                        dispatch(deletePost(post.id));
+                                                        GoTo("/blog")
+                                                    }} className="bg-dark" >Edit Post </button>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -64,9 +110,9 @@ export default function Blog() {
                                 </ul>
                                 <div className="leave-comment">
                                     <h5 className="title">leave comment</h5>
-                                    <form className="blog-form">
+                                    <form className="blog-form" onSubmit={handelSubmit}>
                                         <div className="form-group">
-                                            <textarea placeholder="Write A Message" required ></textarea>
+                                            <input type="text" placeholder="Write A Message" required value={comment.message} onChange={(e) => { setComment({ ...comment, ['message']: e.target.value }) }} />
                                         </div>
                                         <div className="form-group">
                                             <input type="submit" value="Submit Now" />
@@ -82,7 +128,10 @@ export default function Blog() {
                                 <h5 className="title">Share your opinion or your question with us  </h5>
 
 
-                                <button type="submit"><i className="fab fab-school"></i> Add your post now  </button>
+                                <button type="submit" onClick={(e) => {
+                                    e.preventDefault();
+                                    GoTo("/add_post")
+                                }}><i className="fab fab-school"></i> Add your post now  </button>
 
                             </div>
 
@@ -115,10 +164,11 @@ export default function Blog() {
                                         </a>
                                     </li>
                                 </ul>
-                            </div>                       </aside>
+                            </div>
+                        </aside>
                     </div>
-                </div>
-            </div>
-        </section>
+                </div >
+            </div >
+        </section >
     );
 }
