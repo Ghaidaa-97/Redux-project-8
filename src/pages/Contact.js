@@ -3,10 +3,29 @@ import { Helmet } from "react-helmet";
 export default function Contact() {
     return (
         <>
+
+
+<section class="main-page-header speaker-banner bg_img" data-background="./assets/images/banner/banner07.jpg">
+        <div class="container">
+            <div class="speaker-banner-content">
+                <h2 class="title">contact us</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        contact us
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
             <div className="container">
                 <section class="contact-section padding-top">
                     <div class="contact-container">
-                        <div class="bg-thumb bg_img" data-background="./assets/images/contact/contact.jpg"></div>
+                        <div class="bg-thumb bg_img" data-background="./assets/images/contact/contact.jfif"></div>
                         <div class="container">
                             <div class="row justify-content-between">
                                 <div class="col-md-7 col-lg-6 col-xl-5">

@@ -11,12 +11,14 @@ import NotFound from "./pages/NotFound";
 import Signin from "./pages/Signin";
 import Blog from "./pages/Blog";
 import Blog_detail from "./pages/Blog_detail";
+import CheckOut from "./pages/Checkout";
 
 //import your components here (if you have any)
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AddPost from "./pages/AddPost";
 import EditPost from "./pages/EditPost";
+
 
 //import your css here (if you have any)
 //import '../css/main.css';
@@ -39,6 +41,7 @@ export default function AppRoutes() {
                 <Route path="/blog_detail" element={<Blog_detail />} />
                 <Route path="/add_post" element={<AddPost />} />
                 <Route path="/edit_post" element={<EditPost />} />
+                <Route path="/checkout" element={<CheckOut/>} />
 
                 <Route path='*' element={<NotFound />} />
             </Routes>

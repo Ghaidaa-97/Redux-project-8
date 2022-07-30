@@ -33,7 +33,7 @@ function Home() {
 
 
       <section className="banner-section">
-        <div className="banner-bg bg_img bg-fixed" data-background="./assets/images/banner/banner01.jpg"></div>
+        <div className="banner-bg bg_img bg-fixed" data-background="./assets/images/banner/home.jfif"></div>
         <div className="container">
           <div className="banner-content">
             <h1 className="title  cd-headline clip"><span className="d-block">book your</span> tickets for

@@ -14,6 +14,24 @@ export default function About() {
     return (
         <>
 
+<section class="main-page-header speaker-banner bg_img" data-background="./assets/images/banner/banner07.jpg">
+        <div class="container">
+            <div class="speaker-banner-content">
+                <h2 class="title">about us</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        about us
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
             <section class="about-section padding-top padding-bottom">
                 <div class="container">
                     <div class="row justify-content-between">
