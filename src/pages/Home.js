@@ -245,6 +245,8 @@ function Home() {
       {movies.map((movie) => {
         return (
           <div key={movie.id}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt="movie" />
             <h1>{movie.title}</h1>
             <p>{movie.description}</p>
           </div>
