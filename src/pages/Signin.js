@@ -76,7 +76,7 @@ export const Signin = () => {
 
 
     return (
-        <section className="account-section bg_img" data-background="./assets/images/account/account-bg.jpg">
+        <section className="account-section bg_img" data-background="../assets/images/account/account-bg">
             <div className="container">
                 <div className="padding-top padding-bottom">
                     <div className="account-area">
