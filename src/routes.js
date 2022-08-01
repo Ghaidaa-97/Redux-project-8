@@ -42,11 +42,8 @@ export default function AppRoutes() {
                 <Route path="/blog_detail" element={<Blog_detail />} />
                 <Route path="/add_post" element={<AddPost />} />
                 <Route path="/edit_post" element={<EditPost />} />
-<<<<<<< HEAD
-                <Route path="/checkout" element={<CheckOut/>} />
-=======
+                <Route path="/checkout" element={<CheckOut />} />
                 <Route path="/add_movies_api" element={<AddMoviesApi />} />
->>>>>>> feee7cbf239c2edddd6e3bfb82fce11344826839
 
                 <Route path='*' element={<NotFound />} />
             </Routes>

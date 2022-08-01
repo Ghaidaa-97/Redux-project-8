@@ -1,6 +1,16 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 
 export default function () {
+    const [user, setUser] = useState({ email: "", password: "" });
+
+    handelChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+    }
+    handelSubmit = (e) => {
+        e.preventDefault();
+        console.log(user);
+    }
     return (
         <>
             <section class="account-section bg_img" data-background="./assets/images/account/account-bg.jpg">
@@ -11,14 +21,14 @@ export default function () {
                                 <span class="cate">hello</span>
                                 <h2 class="title">welcome back</h2>
                             </div>
-                            <form class="account-form">
+                            <form class="account-form" onSubmit={handelSubmit}>
                                 <div class="form-group">
                                     <label for="email2">Email<span>*</span></label>
-                                    <input type="text" placeholder="Enter Your Email" id="email2" required />
+                                    <input type="text" placeholder="Enter Your Email" id="email2" name="email" onChange={handelChange} value={user.email} required />
                                 </div>
                                 <div class="form-group">
                                     <label for="pass3">Password<span>*</span></label>
-                                    <input type="password" placeholder="Password" id="pass3" required />
+                                    <input type="password" placeholder="Password" id="pass3" name="password" onChange={handelChange} value={user.password} required />
                                 </div>
                                 <div class="form-group checkgroup">
                                     <input type="checkbox" id="bal2" required checked />
