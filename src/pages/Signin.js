@@ -1,30 +1,39 @@
 
 
 import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from "../context/AuthProvider";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { setIsLoggedIn } from '../store/postSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const LOGIN_URL = '/auth';
+
 
 export const Signin = () => {
 
-    const { setAuth } = useContext(AuthContext);
+
     const userRef = useRef();
     const errRef = useRef();
-
+    //entries the user inputs
     const [user, setUser] = useState('');
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    // const [success, setSuccess] = useState(false);
+
+    //user state
     const [userToSend, setUserToSend] = useState({});
 
-    const goTo = useNavigate();
 
+    const GoTo = useNavigate();
+
+    const isLoggedIn = useSelector(state => state.posts.isLoggedIn);
+    const dispatch = useDispatch();
     useEffect(() => {
         userRef.current.focus();
+        if (JSON.parse(localStorage.getItem('user'))) {
+            dispatch(setIsLoggedIn(true));
+            GoTo('/');
+        }
     }, [])
 
     useEffect(() => {
@@ -34,40 +43,14 @@ export const Signin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // try {
-        //     const response = await axios.post(LOGIN_URL,
-        //         JSON.stringify({ user, pwd }),
-        //         {
-        //             headers: { 'Content-Type': 'application/json' },
-        //             withCredentials: true
-        //         }
-        //     );
-        //     console.log(JSON.stringify(response?.data));
-        //     //console.log(JSON.stringify(response));
-        //     const accessToken = response?.data?.accessToken;
-        //     const roles = response?.data?.roles;
-        //     setAuth({ user, pwd, roles, accessToken });
-        //     setUser('');
-        //     setPwd('');
-        //     // setSuccess(true);
-        // } catch (err) {
-        //     if (!err?.response) {
-        //         setErrMsg('No Server Response');
-        //     } else if (err.response?.status === 400) {
-        //         setErrMsg('Missing Username or Password');
-        //     } else if (err.response?.status === 401) {
-        //         setErrMsg('Unauthorized');
-        //     } else {
-        //         setErrMsg('Login Failed');
-        //     }
-        //     errRef.current.focus();
-        // }
+
         setUserToSend({ email: email, password: pwd })
         axios.post('http://127.0.0.1:8000/api/login', userToSend).then(
             (res) => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
-                goTo("/")
+                dispatch(setIsLoggedIn(true));
+                GoTo("/")
             }
         ).catch((err) => {
             console.log(err)
