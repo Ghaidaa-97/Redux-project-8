@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="container">
                 <div className="footer-top">
                     <div className="logo">
-                        <a href="index-1.html">
+                        <a href="/">
                             <img src="./assets/images/footer/footer-logo.png" alt="footer" />
                         </a>
                     </div>
@@ -55,23 +55,20 @@ export default function Footer() {
                 <div className="footer-bottom">
                     <div className="footer-bottom-area">
                         <div className="left">
-                            <p>Copyright © 2020.All Rights Reserved By <a href="#0">Boleto </a></p>
+                            <p>Copyright © 2022.All Rights Reserved By <a href="#0">Boleto </a></p>
                         </div>
                         <ul className="links">
                             <li>
-                                <a href="#0">About</a>
+                                <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="#0">Terms Of Use</a>
+                                <a href="/about">About</a>
                             </li>
                             <li>
-                                <a href="#0">Privacy Policy</a>
+                                <a href="/contact">Contact</a>
                             </li>
                             <li>
-                                <a href="#0">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="#0">Feedback</a>
+                                <a href="/blog">Blog</a>
                             </li>
                         </ul>
                     </div>

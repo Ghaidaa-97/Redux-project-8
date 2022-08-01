@@ -34,17 +34,17 @@ function Home() {
         <div className="container">
           <div className="banner-content">
             <h1 className="title  cd-headline clip">
-              <span className="d-block">book your</span> tickets for
+              <span className="d-block">book your</span> tickets for..
               <span className="color-theme cd-words-wrapper p-0 m-0">
-                <b className="is-visible">Movie</b>
+                <b className="is-visible"> Movie</b>
              
               </span>
             </h1>
 
-            <p>
-              Safe, secure, reliable ticketing.Your ticket to live
+            <h6 style={{color:"darkgrey"}}>
+              Safe , secure and reliable ticketing . Your ticket to live
               entertainment!
-            </p>
+            </h6>
           </div>
         </div>
       </section>
@@ -83,25 +83,7 @@ function Home() {
                         alt="ticket"
                       />
                     </div>
-                    <span>movie</span>
-                  </li>
-                  <li>
-                    <div className="tab-thumb">
-                      <img
-                        src="./assets/images/ticket/ticket-tab02.png"
-                        alt="ticket"
-                      />
-                    </div>
-                    <span>events</span>
-                  </li>
-                  <li>
-                    <div className="tab-thumb">
-                      <img
-                        src="./assets/images/ticket/ticket-tab03.png"
-                        alt="ticket"
-                      />
-                    </div>
-                    <span>sports</span>
+                    <span>movies</span>
                   </li>
                 </ul>
               </div>
@@ -280,15 +262,8 @@ function Home() {
       {movies.map((movie) => {
         return (
           <div key={movie.id}>
-<<<<<<< HEAD
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt="movie"
-            />
-=======
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt="movie" />
->>>>>>> 89fb0cbe7dfb984dd057221f18d44659a437be67
             <h1>{movie.title}</h1>
             <p>{movie.description}</p>
           </div>
@@ -312,10 +287,11 @@ function Home() {
             <div className="tab-area mb-30-none">
               <div className="tab-item active">
 
+              <div className="card1" style={{minHeight:300}}>
                 <div className="row">
                   {movies.map((movie) => (
                     <>
-                      <div class="col-sm-6 col-lg-4">
+                      <div class="col-sm-6 col-lg-3">
                         <div class="movie-grid">
                           <div class="movie-thumb c-thumb">
                             <a href="movie-details.html">
@@ -333,14 +309,14 @@ function Home() {
                             </a>
                           </div>
                           <div class="movie-content bg-one">
-                            <h5 class="title m-0">
-                              <a href="movie-details.html">{movie.title}</a>
-                            </h5>
-                            <ul class="movie-rating-percent">
-                              <li>
+                            <p class="title m-0" style={{textAlign:'center'}}>
+                              <a href="movie-details.html" style={{color:'white'}}>{movie.title}</a>
+                            </p>
+                            {/* <ul class="movie-rating-percent">
+                              <li> */}
                                 {/* <span class="content">{movie.description}</span> */}
-                              </li>
-                            </ul>
+                              {/* </li>
+                            </ul> */}
                           </div>
                         </div>
                       </div>
@@ -371,6 +347,7 @@ function Home() {
                       </div> */}
                     </>
                   ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -381,7 +358,7 @@ function Home() {
 
 
 
-      <section class="client-section padding-bottom padding-top bg_img" data-background="./assets/images/client/home1.jfif">
+      {/* <section class="client-section padding-bottom padding-top bg_img" data-background="./assets/images/client/home1.jfif">
         <div class="container">
           <div class="section-header-3">
             <span class="cate">testimonials</span>
@@ -446,8 +423,60 @@ function Home() {
             </div>
           </div>
         </div>
+      </section> */}
+
+      <section>
+      <div className="newslater-section padding-bottom">
+                <div className="container">
+                    <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
+                        <div className="newslater-wrapper">
+                            <h5 className="cate">subscribe to Boleto </h5>
+                            <h3 className="title">to get exclusive benifits</h3>
+                            <form className="newslater-form">
+                                <input type="text" placeholder="Your Email Address" />
+                                <button type="submit">subscribe</button>
+                            </form>
+                            <p>We respect your privacy, so we never share your info</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
       </section>
 
+      <div class="philosophy-section   padding-bottom bg-one bg_img bg_quater_img" data-background="./assets/images/about/about.jfif">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 offset-lg-3 bg-two">
+                            <div class="philosophy-content">
+                                <div class="section-header-3 left-style">
+                                    <span class="cate">Take look at</span>
+                                    <h2 class="title">Our philosophy</h2>
+                                </div>
+                                <ul class="phisophy-list">
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="./assets/images/philosophy/icon1.png" alt="philosophy" />
+                                        </div>
+                                        <h5 class="title">Honesty & Fairness </h5>
+                                    </li>
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="./assets/images/philosophy/icon2.png" alt="philosophy" />
+                                        </div>
+                                        <h5 class="title">Clarity & Transparency</h5>
+                                    </li>
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="./assets/images/philosophy/icon3.png" alt="philosophy" />
+                                        </div>
+                                        <h5 class="title">Focus on Customers</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
       <Helmet>
         <script src="assets/js/jquery-3.3.1.min.js"></script>
