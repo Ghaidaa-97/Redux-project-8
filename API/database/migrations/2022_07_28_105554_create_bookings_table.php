@@ -21,7 +21,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('tikit_id');
             $table->foreign('tikit_id')->references('id')->on('tikits');
             $table->double('total_price');
-            $table->string('payment_method');
+            $table->string('payment_method')->default('cash');
             $table->timestamps();
         });
     }
