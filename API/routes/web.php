@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,39 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//movies//
+Route::resource('admin', AdminController::class);
+Route::get('/ad/movies', [AdminController::class, 'movies'])->name('admin.movies');
+Route::get('/ad/movies/add', [AdminController::class, 'Addmovies'])->name('admin.movies_add');
+Route::post('/ad/movies/adds', [AdminController::class, 'storemovies'])->name('admin.movies_save');
+Route::get('/ad/movies/edit/{id}', [AdminController::class, 'editmovies'])->name('admin.movies_edit');
+Route::put('/ad/movies/edits/{id}', [AdminController::class, 'updatemovies'])->name('admin.movies_update');
+Route::delete('/ad/movies/delete/{id}', [AdminController::class, 'deletemovies'])->name('admin.movies_delete');
+//end of movies//
+
+
+// tickets//
+Route::get('/ad/tickets', [AdminController::class, 'tickets'])->name('admin.tickets');
+
+//end of tickets//
+
+//user
+
+Route::get('/ad/users', [AdminController::class, 'users'])->name('admin.users');
+Route::get('/ad/users/add', [AdminController::class, 'Addusers'])->name('admin.users_add');
+Route::post('/ad/users/adds', [AdminController::class, 'storusers'])->name('admin.users_save');
+Route::delete('/ad/users/delete/{id}', [AdminController::class, 'deleteusers'])->name('admin.users_delete');
+
+//end of user//
+
+//post//
+
+Route::get('/ad/posts', [AdminController::class, 'posts'])->name('admin.posts');
+Route::delete('/ad/posts/delete/{id}', [AdminController::class, 'deleteposts'])->name('admin.posts_delete');
+//end of posts//
+
+//comments//
+
+Route::get('/ad/comments', [AdminController::class, 'comments'])->name('admin.comments');
+//end of comments//

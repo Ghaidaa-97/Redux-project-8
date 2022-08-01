@@ -14,22 +14,22 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="{{asset('admin/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('dashbord/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="{{asset('admin/plugins/node-waves/waves.css')}}" rel="stylesheet" />
+    <link href="{{asset('dashbord/plugins/node-waves/waves.css')}}" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="{{asset('admin/plugins/animate-css/animate.css')}}" rel="stylesheet" />
+    <link href="{{asset('dashbord/plugins/animate-css/animate.css')}}" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="{{asset('admin/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
+    <link href="{{asset('dashbord/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('dashbord/css/style.css')}}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="{{asset('admin/css/themes/all-themes.css')}}" rel="stylesheet" />
+    <link href="{{asset('dashbord/css/themes/all-themes.css')}}" rel="stylesheet" />
     @yield('style')
 </head>
 
@@ -309,12 +309,35 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="{{route('admin.create')}}">
-                                <i class="material-icons">school</i>
-                                <span>Schools</span>
+                            <a href="{{route('admin.movies')}}">
+                                <i class="material-icons">movie</i>
+                                <span>movies</span>
                             </a>
                         </li>
-                       
+                        <li class="active">
+                            <a href="{{route('admin.posts')}}">
+                                <i class="material-icons">Posts</i>
+                                <span>Posts</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="{{route('admin.posts')}}">
+                                <i class="material-icons">Comments</i>
+                                <span>Comments</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="{{route('admin.users')}}">
+                                <i class="material-icons">Users</i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="{{route('admin.tickets')}}">
+                                <i class="material-icons">ticket</i>
+                                <span>tickets</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
-                

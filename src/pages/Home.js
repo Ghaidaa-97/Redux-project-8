@@ -37,8 +37,7 @@ function Home() {
               <span className="d-block">book your</span> tickets for
               <span className="color-theme cd-words-wrapper p-0 m-0">
                 <b className="is-visible">Movie</b>
-                <b>Event</b>
-                <b>Sport</b>
+             
               </span>
             </h1>
 
@@ -312,17 +311,25 @@ function Home() {
             </div>
             <div className="tab-area mb-30-none">
               <div className="tab-item active">
-                
-                  <div className="row">
+
+                <div className="row">
                   {movies.map((movie) => (
                     <>
                       <div class="col-sm-6 col-lg-4">
                         <div class="movie-grid">
                           <div class="movie-thumb c-thumb">
                             <a href="movie-details.html">
-                              <img
-                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                              />
+                              {
+                                movie.from == 2 ?
+                                  <img
+                                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                  />
+                                  :
+                                  <img
+                                    src={`http://127.0.0.1:8000/images/${movie.poster_path}`}
+                                    height="540px"
+                                  />
+                              }
                             </a>
                           </div>
                           <div class="movie-content bg-one">
@@ -367,79 +374,79 @@ function Home() {
                 </div>
               </div>
             </div>
-          
-        </div>
+
+          </div>
         </div>
       </section>
 
 
 
       <section class="client-section padding-bottom padding-top bg_img" data-background="./assets/images/client/home1.jfif">
-                <div class="container">
-                    <div class="section-header-3">
-                        <span class="cate">testimonials</span>
-                        <h2 class="title">the fans have spoken</h2>
-                    </div>
-                    <div class="client-slider owl-carousel owl-theme">
-                        <div class="client-item">
-                            <div class="client-thumb">
-                                <img src="./assets/images/client/client01.jpg" alt="client" />
-                            </div>
-                            <div class="client-content">
-                                <h5 class="title">
-                                    <a href="#0">Rafuz</a>
-                                </h5>
-                                <span class="info"><i class="fas fa-check"></i> Verified</span>
-                                <blockquote class="client-quote">
-                                    "Great prices and Cheaper than other sites! Easy to use."
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="client-item">
-                            <div class="client-thumb">
-                                <img src="./assets/images/client/client03.jpg" alt="client" />
-                            </div>
-                            <div class="client-content">
-                                <h5 class="title">
-                                    <a href="#0">Rudra</a>
-                                </h5>
-                                <span class="info"><i class="fas fa-check"></i> Verified</span>
-                                <blockquote class="client-quote">
-                                    "Id iure est sint at illum ipsum non beatae cumque"
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="client-item">
-                            <div class="client-thumb">
-                                <img src="./assets/images/client/client02.jpg" alt="client" />
-                            </div>
-                            <div class="client-content">
-                                <h5 class="title">
-                                    <a href="#0">Raihan</a>
-                                </h5>
-                                <span class="info"><i class="fas fa-check"></i> Verified</span>
-                                <blockquote class="client-quote">
-                                    "amet consectetur adipisicing elit. Animi, ut consequuntur"
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="client-item">
-                            <div class="client-thumb">
-                                <img src="./assets/images/client/client04.jpg" alt="client" />
-                            </div>
-                            <div class="client-content">
-                                <h5 class="title">
-                                    <a href="#0">Shahidul</a>
-                                </h5>
-                                <span class="info"><i class="fas fa-check"></i> Verified</span>
-                                <blockquote class="client-quote">
-                                    "Quia voluptatum animi libero recusandae error."
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="container">
+          <div class="section-header-3">
+            <span class="cate">testimonials</span>
+            <h2 class="title">the fans have spoken</h2>
+          </div>
+          <div class="client-slider owl-carousel owl-theme">
+            <div class="client-item">
+              <div class="client-thumb">
+                <img src="./assets/images/client/client01.jpg" alt="client" />
+              </div>
+              <div class="client-content">
+                <h5 class="title">
+                  <a href="#0">Rafuz</a>
+                </h5>
+                <span class="info"><i class="fas fa-check"></i> Verified</span>
+                <blockquote class="client-quote">
+                  "Great prices and Cheaper than other sites! Easy to use."
+                </blockquote>
+              </div>
+            </div>
+            <div class="client-item">
+              <div class="client-thumb">
+                <img src="./assets/images/client/client03.jpg" alt="client" />
+              </div>
+              <div class="client-content">
+                <h5 class="title">
+                  <a href="#0">Rudra</a>
+                </h5>
+                <span class="info"><i class="fas fa-check"></i> Verified</span>
+                <blockquote class="client-quote">
+                  "Id iure est sint at illum ipsum non beatae cumque"
+                </blockquote>
+              </div>
+            </div>
+            <div class="client-item">
+              <div class="client-thumb">
+                <img src="./assets/images/client/client02.jpg" alt="client" />
+              </div>
+              <div class="client-content">
+                <h5 class="title">
+                  <a href="#0">Raihan</a>
+                </h5>
+                <span class="info"><i class="fas fa-check"></i> Verified</span>
+                <blockquote class="client-quote">
+                  "amet consectetur adipisicing elit. Animi, ut consequuntur"
+                </blockquote>
+              </div>
+            </div>
+            <div class="client-item">
+              <div class="client-thumb">
+                <img src="./assets/images/client/client04.jpg" alt="client" />
+              </div>
+              <div class="client-content">
+                <h5 class="title">
+                  <a href="#0">Shahidul</a>
+                </h5>
+                <span class="info"><i class="fas fa-check"></i> Verified</span>
+                <blockquote class="client-quote">
+                  "Quia voluptatum animi libero recusandae error."
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       <Helmet>

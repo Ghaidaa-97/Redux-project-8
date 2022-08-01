@@ -6,7 +6,7 @@ import { addMovie } from "../store/MoviesSlice";
 export default function AddMoviesApi() {
     const [movies, setMovies] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [movie, setMovie] = useState({ title: "", description: "", genre: "", release_date: "", rating: "", poster_path: "", backdrop_path: "", trailer: "" });
+    const [movie, setMovie] = useState({ title: "", description: "", genre: "", release_date: "", rating: "", poster_path: "", backdrop_path: "", trailer: "", from: 2 });
     const dispatch = useDispatch();
     const handelClick = async () => {
         alert("Movie added successfully");
@@ -25,6 +25,7 @@ export default function AddMoviesApi() {
                     method: "post",
                     url: "http://localhost:8000/api/movies",
                     data: {
+                        from: 2,
                         title: move.original_title,
                         description: move.overview,
                         release_date: move.release_date,
