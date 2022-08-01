@@ -6,12 +6,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
-import Signin from "./pages/Signin";
+import {Register} from "./pages/Signup";
+import {Signin} from "./pages/Signin";
 import Blog from "./pages/Blog";
 import Blog_detail from "./pages/Blog_detail";
 import CheckOut from "./pages/Checkout";
+import Profile from "./pages/Profile";
 
 //import your components here (if you have any)
 import Nav from "./components/Nav";
@@ -36,17 +37,15 @@ export default function AppRoutes() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/sign-up" element={<Register />} />
                 <Route path="/sign-in" element={<Signin />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog_detail" element={<Blog_detail />} />
                 <Route path="/add_post" element={<AddPost />} />
                 <Route path="/edit_post" element={<EditPost />} />
-<<<<<<< HEAD
                 <Route path="/checkout" element={<CheckOut/>} />
-=======
                 <Route path="/add_movies_api" element={<AddMoviesApi />} />
->>>>>>> feee7cbf239c2edddd6e3bfb82fce11344826839
+                <Route path="/profile" element={<Profile />} />
 
                 <Route path='*' element={<NotFound />} />
             </Routes>
