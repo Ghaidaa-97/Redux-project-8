@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\booking;
+use App\Models\tikits;
 use Validator;
 class BookingController extends Controller
 {
@@ -18,7 +19,16 @@ class BookingController extends Controller
         return response()->json($bookings);
     }
 
-    /**
+
+
+    public function get_teckit(Request $request){
+
+        $tikits = tikits::where('movie_id' ,$request->movie_id);
+
+        // return response()->json($tikits, 200);
+    }
+
+    /** 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -27,7 +37,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'site_name' => 'required',
+            
             'user_id' => 'required',
             'tikit_id' => 'required',
             'total_price' => 'required',

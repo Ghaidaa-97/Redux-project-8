@@ -42,12 +42,26 @@ export default function AppRoutes() {
                 <Route path="/sign-up" element={<Register />} />
                 <Route path="/sign-in" element={<Signin />} />
                 <Route path="/blog" element={<Blog />} />
+<<<<<<< HEAD
                 <Route path="/blog_detail" element={isLoggedIn ? <Blog_detail /> : <Signin />} />
                 <Route path="/add_post" element={isLoggedIn ? <AddPost /> : <Signin />} />
                 <Route path="/edit_post" element={isLoggedIn ? <EditPost /> : <Signin />} />
                 <Route path="/checkout" element={isLoggedIn ? <CheckOut /> : <Signin />} />
                 <Route path="/add_movies_api" element={<AddMoviesApi />} />
                 <Route path="/profile" element={isLoggedIn ? <Profile /> : <Signin />} />
+=======
+                <Route path="/blog_detail" element={<Blog_detail />} />
+                <Route path="/add_post" element={<AddPost />} />
+                <Route path="/edit_post" element={<EditPost />} />
+<<<<<<< HEAD
+                <Route path="/checkout" element={<CheckOut/>} />
+                <Route path="/add_movies_api" element={<AddMoviesApi />} />
+=======
+                <Route path="/checkout" element={<CheckOut />} />
+                <Route path="/add_movies_api" element={<AddMoviesApi />} />
+                <Route path="/profile" element={<Profile />} />
+>>>>>>> 89fb0cbe7dfb984dd057221f18d44659a437be67
+>>>>>>> 17b3c9056cfc6d075c4e360c5772ed909c2c2a7f
 
                 <Route path='*' element={<NotFound />} />
             </Routes>
