@@ -92,7 +92,7 @@ export const Register = () => {
         }
     }, [])
     return (
-        <section class="account-section bg_img" data-background="./assets/images/account/account-bg.jpg">
+        <section class="account-section bg_img" data-background="./assets/images/account/account-bg.jpeg">
             <div class="container">
                 <div class="padding-top padding-bottom">
                     <div class="account-area">

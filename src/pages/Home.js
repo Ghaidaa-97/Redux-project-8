@@ -37,8 +37,7 @@ function Home() {
               <span className="d-block">book your</span> tickets for
               <span className="color-theme cd-words-wrapper p-0 m-0">
                 <b className="is-visible">Movie</b>
-                <b>Event</b>
-                <b>Sport</b>
+             
               </span>
             </h1>
 

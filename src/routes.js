@@ -42,12 +42,21 @@ export default function AppRoutes() {
                 <Route path="/sign-up" element={<Register />} />
                 <Route path="/sign-in" element={<Signin />} />
                 <Route path="/blog" element={<Blog />} />
+<<<<<<< HEAD
+                <Route path="/blog_detail" element={<Blog_detail />} />
+                <Route path="/add_post" element={<AddPost />} />
+                <Route path="/edit_post" element={<EditPost />} />
+                <Route path="/checkout" element={<CheckOut />} />
+                <Route path="/add_movies_api" element={<AddMoviesApi />} />
+                <Route path="/profile" element={<Profile />} />
+=======
                 <Route path="/blog_detail" element={isLoggedIn ? <Blog_detail /> : <Signin />} />
                 <Route path="/add_post" element={isLoggedIn ? <AddPost /> : <Signin />} />
                 <Route path="/edit_post" element={isLoggedIn ? <EditPost /> : <Signin />} />
                 <Route path="/checkout" element={isLoggedIn ? <CheckOut /> : <Signin />} />
                 <Route path="/add_movies_api" element={<AddMoviesApi />} />
                 <Route path="/profile" element={isLoggedIn ? <Profile /> : <Signin />} />
+>>>>>>> 57e4814caeec3fdb569398f19be8ce7af5ff688e
 
                 <Route path='*' element={<NotFound />} />
             </Routes>
