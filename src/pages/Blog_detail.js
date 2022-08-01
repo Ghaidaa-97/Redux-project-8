@@ -11,7 +11,7 @@ export default function Blog_detail() {
     console.log(post.title == "");
 
     const loading = useSelector((state) => state.posts.loading);
-    const [comment, setComment] = useState({ user_id: "1", post_id: post.id, message: "" });
+    const [comment, setComment] = useState({ user_id: JSON.parse(localStorage.getItem('user')).id , post_id: post.id, message: "" });
     const [edit, setEdit] = useState(false);
     useEffect(() => {
         if (loading) {
@@ -29,10 +29,10 @@ export default function Blog_detail() {
             dispatch(editComment(comment));
             setEdit(false);
             dispatch(getPost(post.id));
-            setComment({ user_id: "1", post_id: post.id, message: "" });
+            setComment({ user_id: JSON.parse(localStorage.getItem('user')).id , post_id: post.id, message: "" });
         } else {
             dispatch(addComment(comment));
-            setComment({ user_id: "1", post_id: post.id, message: "", id: "" });
+            setComment({ user_id: JSON.parse(localStorage.getItem('user')).id , post_id: post.id, message: "", id: "" });
         }
         window.scrollTo(20, 160)
     }

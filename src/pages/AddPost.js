@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addPost, getPosts } from "../store/postSlice";
 import { useNavigate } from "react-router-dom";
 export default function Addpost() {
-    const [post, setPost] = useState({ title: '', content: '', user_id: 1 });
+    const [post, setPost] = useState({ title: '', content: '', user_id: JSON.parse(localStorage.getItem('user')).id });
     const dispatch = useDispatch();
     const GoTo = useNavigate();
     window.scroll(0, 0);

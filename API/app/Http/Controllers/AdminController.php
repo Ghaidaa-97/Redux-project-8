@@ -11,6 +11,7 @@ use App\Models\tikits;
 use Validator ;
 use App\Http\Requests\StoreadminRequest;
 use App\Http\Requests\UpdateadminRequest;
+use Hash ;
 
 class AdminController extends Controller
 {
@@ -129,16 +130,69 @@ class AdminController extends Controller
         $comments = comment::all();
         return view('Admin.comments.comments', compact('comments'));
     }
+
+
+
+
+
     public function posts()
     {
         $posts = post::all();
         return view('Admin.posts.posts', compact('posts'));
     }
+
+  
+ 
+    public function deleteposts($id){
+        $post =post::find($id);
+        $comments =comment::where ('post_id' , $id)->delete();
+        $post->delete();
+        
+        return redirect()->route('admin.posts')->with('Successfully deleted post');
+    }
+    
+
     public function users()
     {
         $users = User::all();
         return view('Admin.users.users', compact('users'));
     }
+
+    public function Addusers()
+    {
+        return view('Admin.users.addusers');
+    }
+
+    public function storusers(StoreadminRequest $request){
+    $validate = $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:6',
+    ]);
+
+    if ($request == true) {
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+      
+
+        $user->save();
+        return redirect()->route('admin.users')->with('success', 'user added successfully');
+
+    }}
+
+    public function deleteusers($id){
+        $user = User::find($id);
+        $posts =post::where ('user_id' , $id)->get();
+        foreach($posts as $post){
+        $post->user_id = 1 ;
+        $post->update(); }
+        $user->delete();   
+        return redirect()->route('admin.users')->with('success', 'user deleted successfully');
+    }
+
+
     public function tickets()
     {
         $tikits = tikits::all();

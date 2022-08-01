@@ -1,84 +1,63 @@
 @extends('Admin.masterpage.master')
 @section('title')
-    Admin||schools
+    Admin||Users
 @endsection
 @section('con')
+
 <div class="container-fluid">
+
     <div class="row clearfix">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-                <div class="header bg-red">
-                    <h2>
-                        Red - Title <small>Description text here...</small>
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                </div>
-            </div>
+    @if(isset($success))
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">{{$success}}</h4>
+
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    @endif
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-                <div class="header bg-cyan">
-                    <h2>
-                        Cyan - Title <small>Description text here...</small>
-                    </h2>
+                <div class="header">
+                    <h2> Users </h2>
                     <ul class="header-dropdown m-r--5">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons">mic</i>
-                            </a>
-                        </li>
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                                <li><a href="{{route('admin.users_add')}}" class=" waves-effect waves-block">Add</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="body">
-                    Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-                <div class="header bg-green">
-                    <h2>
-                        Green - Title <small>Description text here...</small>
-                    </h2>
-                    <ul class="header-dropdown m-r-0">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons">info_outline</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons">help_outline</i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
+                <div class="body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $key =>  $user)
+                            <tr>
+                                <th scope="row">{{$key +1 }}</th>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                
+                                  
+                                    <td>{{$user->password}}</td>
+                                {{-- <td><a href="{{route('admin.movies_edit' , $movie->id )}}" class="btn btn-warning ">Edit Movie</a></td> --}}
+                                <td><form action="{{route('admin.users_delete' , $user->id )}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete" >  </form></td>
+
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
