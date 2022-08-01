@@ -79,7 +79,6 @@ export const Register = () => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
                 dispatch(setIsLoggedIn(true))
-                GoTo("/")
             }
         ).catch((err) => {
             console.log(err)
@@ -89,9 +88,9 @@ export const Register = () => {
 
         if (JSON.parse(localStorage.getItem('user'))) {
             dispatch(setIsLoggedIn(true))
-            GoTo(window.location.pathname);
+            GoTo("/profile");
         }
-    }, [])
+    }, [isLoggedIn])
     return (
         <section class="account-section bg_img" data-background="../assets/images/account/account-bg.jpeg">
             <div class="container">

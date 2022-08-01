@@ -21,6 +21,11 @@ Route::post('login' , [Login::class , 'Login_user']);
 Route::post('register' ,[Login::class , 'Register']);
 
 
+//edit user info
+Route::put('/profile/{id}',[Login::class,'update']);
+
+ 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

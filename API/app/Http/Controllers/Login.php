@@ -45,6 +45,25 @@ class Login extends Controller
       }
       return response()->json(['message' => 'Invalid email or password'], 400);
    }
+   
+
+  public function update(Request $request,$id)
+         {
+          $user=User::find($id);
+          $user->name =$request->name;
+          $user->email =$request->email;
+          $user->phone =$request->phone;
+
+          $user->update();
+
+            return response()->json($user,200);
+
+
+
+
+
+
+         }
 
 }
 

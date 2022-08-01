@@ -1,6 +1,6 @@
 
 
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { setIsLoggedIn } from '../store/postSlice';
@@ -32,9 +32,9 @@ export const Signin = () => {
         userRef.current.focus();
         if (JSON.parse(localStorage.getItem('user'))) {
             dispatch(setIsLoggedIn(true));
-            GoTo('/');
+            GoTo('/profile');
         }
-    }, [])
+    }, [isLoggedIn])
 
     useEffect(() => {
         setErrMsg('');
@@ -50,7 +50,6 @@ export const Signin = () => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
                 dispatch(setIsLoggedIn(true));
-                GoTo("/")
             }
         ).catch((err) => {
             console.log(err)
@@ -103,7 +102,7 @@ export const Signin = () => {
                             {/* {isLoading && <Spinner variant="primary" animation="border" />} */}
                         </form>
                         <div className="option">
-                            Don't have an account? <a href="sign-up.html">sign up now</a>
+                            Don't have an account? <a href="sign-up">sign up now</a>
                         </div>
                     </div>
                 </div>

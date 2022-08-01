@@ -13,20 +13,18 @@ export default function Nav() {
         setDomain(window.location.pathname);
     }, [])
 
-    const handelClick = () => {
 
-    }
     return (
 
         <header class="header-section">
             <div class="container">
                 <div class="header-wrapper">
                     <div class="logo">
-                        <NavLink to="index.html">
+                        <NavLink to="/">
                             <img src="./assets/images/logo/logo.png" alt="logo" />
                         </NavLink>
                     </div>
-                    <ul class="menu">
+                    <ul class="menu d-flex align-items-center justify-content-center">
                         <li>
                             <NavLink to="/"  >Home</NavLink>
                         </li>
@@ -34,16 +32,16 @@ export default function Nav() {
                             <NavLink to="/blog"  >Blog</NavLink>
                         </li>
                         <li>
+                            <NavLink to="/profile"  >Profile</NavLink>
+                        </li>
+                        <li>
                             <NavLink to="/About">About Us</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/contact">contact</NavLink>
+                            <NavLink to="/contact">contact Us</NavLink>
                         </li>
                         {!isLoggedIn ?
                             <>
-                                <li class="header-button pr-0">
-                                    <NavLink to="/sign-up">Sign up</NavLink>
-                                </li>
                                 <li class="header-button pr-0">
                                     <NavLink to="/sign-in">Sign In</NavLink>
                                 </li>
