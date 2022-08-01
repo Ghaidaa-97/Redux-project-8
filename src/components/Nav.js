@@ -39,19 +39,6 @@ export default function Nav() {
                         <li>
                             <NavLink to="/contact">contact</NavLink>
                         </li>
-<<<<<<< HEAD
-                        <li>
-                            <NavLink to="/checkout">check out</NavLink>
-                        </li>
-                        <li class="header-button pr-0">
-                            <NavLink to="/sign-up">Sign up</NavLink>
-                        </li>
-                        <li class="header-button pr-0">
-                            <NavLink to="/sign-in">Sign In</NavLink>
-                        </li>
-
-                        
-=======
                         {!isLoggedIn ?
                             <>
                                 <li class="header-button pr-0">
@@ -71,7 +58,6 @@ export default function Nav() {
                                 }>Logout</NavLink>
                             </li>}
 
->>>>>>> 89fb0cbe7dfb984dd057221f18d44659a437be67
                     </ul>
                     <div class="header-bar d-lg-none">
                         <span></span>
