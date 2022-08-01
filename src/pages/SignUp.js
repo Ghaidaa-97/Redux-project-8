@@ -79,7 +79,6 @@ export const Register = () => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
                 dispatch(setIsLoggedIn(true))
-                GoTo("/")
             }
         ).catch((err) => {
             console.log(err)

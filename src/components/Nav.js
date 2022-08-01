@@ -13,9 +13,7 @@ export default function Nav() {
         setDomain(window.location.pathname);
     }, [])
 
-    const handelClick = () => {
 
-    }
     return (
 
         <header class="header-section">
