@@ -281,10 +281,15 @@ function Home() {
       {movies.map((movie) => {
         return (
           <div key={movie.id}>
+<<<<<<< HEAD
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt="movie"
             />
+=======
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt="movie" />
+>>>>>>> 89fb0cbe7dfb984dd057221f18d44659a437be67
             <h1>{movie.title}</h1>
             <p>{movie.description}</p>
           </div>

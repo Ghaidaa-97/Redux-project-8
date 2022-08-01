@@ -95,6 +95,7 @@ const initialState = {
         comments: []
 
     },
+    isLoggedIn: false,
 };
 
 const postSlice = createSlice({
@@ -109,6 +110,10 @@ const postSlice = createSlice({
         },
         setPage: (state, action) => {
             state.page = action.payload;
+        }
+        ,
+        setIsLoggedIn: (state, action) => {
+            state.isLoggedIn = action.payload;
         }
     }
     ,
@@ -237,6 +242,6 @@ const postSlice = createSlice({
 
 });
 
-export const { setPost, setPage, setlastPage } = postSlice.actions;
+export const { setPost, setPage, setlastPage, setIsLoggedIn } = postSlice.actions;
 
 export default postSlice.reducer;

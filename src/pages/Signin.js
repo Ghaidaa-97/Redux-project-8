@@ -1,76 +1,113 @@
-import { Helmet } from "react-helmet";
 
-export default function () {
+
+import { useRef, useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { setIsLoggedIn } from '../store/postSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+
+
+export const Signin = () => {
+
+
+    const userRef = useRef();
+    const errRef = useRef();
+    //entries the user inputs
+    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+
+    //user state
+    const [userToSend, setUserToSend] = useState({});
+
+
+    const GoTo = useNavigate();
+
+    const isLoggedIn = useSelector(state => state.posts.isLoggedIn);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        userRef.current.focus();
+        if (JSON.parse(localStorage.getItem('user'))) {
+            dispatch(setIsLoggedIn(true));
+            GoTo('/');
+        }
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd, email])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+
+        setUserToSend({ email: email, password: pwd })
+        axios.post('http://127.0.0.1:8000/api/login', userToSend).then(
+            (res) => {
+                console.log(res)
+                localStorage.setItem("user", JSON.stringify(res.data))
+                dispatch(setIsLoggedIn(true));
+                GoTo("/")
+            }
+        ).catch((err) => {
+            console.log(err)
+        })
+    }
+
+
     return (
-        <>
-            <section class="account-section bg_img" data-background="./assets/images/account/account-bg.jpg">
-                <div class="container">
-                    <div class="padding-top padding-bottom">
-                        <div class="account-area">
-                            <div class="section-header-3">
-                                <span class="cate">hello</span>
-                                <h2 class="title">welcome back</h2>
+        <section className="account-section bg_img" data-background="../assets/images/account/account-bg">
+            <div className="container">
+                <div className="padding-top padding-bottom">
+                    <div className="account-area">
+                        <div className="section-header-3">
+                            <span className="cate">hello</span>
+                            <h2 className="title">welcome back</h2>
+                        </div>
+                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                        <form className="account-form" onSubmit={handleSubmit}>
+                            {/* {error && <Alert variant="danger">{error}</Alert>} */}
+                            <div className="form-group">
+                                <label htmlFor="username">Email:</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
+                                    required
+                                />
                             </div>
-                            <form class="account-form">
-                                <div class="form-group">
-                                    <label for="email2">Email<span>*</span></label>
-                                    <input type="text" placeholder="Enter Your Email" id="email2" required />
-                                </div>
-                                <div class="form-group">
-                                    <label for="pass3">Password<span>*</span></label>
-                                    <input type="password" placeholder="Password" id="pass3" required />
-                                </div>
-                                <div class="form-group checkgroup">
-                                    <input type="checkbox" id="bal2" required checked />
-                                    <label for="bal2">remember password</label>
-                                    <a href="#0" class="forget-pass">Forget Password</a>
-                                </div>
-                                <div class="form-group text-center">
-                                    <input type="submit" value="log in" />
-                                </div>
-                            </form>
-                            <div class="option">
-                                Don't have an account? <a href="sign-up.html">sign up now</a>
+                            <div className="form-group">
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    onChange={(e) => setPwd(e.target.value)}
+                                    value={pwd}
+                                    required
+                                />
                             </div>
-                            <div class="or"><span>Or</span></div>
-                            <ul class="social-icons">
-                                <li>
-                                    <a href="#0">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0" class="active">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0">
-                                        <i class="fab fa-google"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div className="form-group checkgroup">
+                                <input type="checkbox" id="bal2" required checked />
+                                <label for="bal2">remember password</label>
+                                <a href="#0" className="forget-pass">Forget Password</a>
+                            </div>
+                            <div className="form-group text-center">
+                                <input type="submit" value="log in" />
+                            </div>
+                            {/* {isLoading && <Spinner variant="primary" animation="border" />} */}
+                        </form>
+                        <div className="option">
+                            Don't have an account? <a href="sign-up.html">sign up now</a>
                         </div>
                     </div>
                 </div>
-            </section>
-            <Helmet>
-                <script src="assets/js/jquery-3.3.1.min.js"></script>
-                <script src="assets/js/modernizr-3.6.0.min.js"></script>
-                <script src="assets/js/plugins.js"></script>
-                <script src="assets/js/bootstrap.min.js"></script>
-                <script src="assets/js/heandline.js"></script>
-                <script src="assets/js/isotope.pkgd.min.js"></script>
-                <script src="assets/js/magnific-popup.min.js"></script>
-                <script src="assets/js/owl.carousel.min.js"></script>
-                <script src="assets/js/wow.min.js"></script>
-                <script src="assets/js/countdown.min.js"></script>
-                <script src="assets/js/odometer.min.js"></script>
-                <script src="assets/js/viewport.jquery.js"></script>
-                <script src="assets/js/nice-select.js"></script>
-                <script src="assets/js/main.js"></script>
-
-            </Helmet>
-        </>
+            </div>
+        </section>
     );
 }
