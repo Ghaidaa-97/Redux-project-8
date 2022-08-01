@@ -22,6 +22,7 @@ class CreateMoviesTable extends Migration
             $table->longText('poster_path')->nullable();
             $table->longText('backdrop_path')->nullable();
             $table->string('trailer')->nullable();
+            $table->integer('from');
             $table->timestamps();
         });
     }
