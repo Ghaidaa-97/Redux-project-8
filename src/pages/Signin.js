@@ -1,86 +1,130 @@
-import { useState } from "react";
-import { Helmet } from "react-helmet";
 
-export default function () {
-    const [user, setUser] = useState({ email: "", password: "" });
 
-    handelChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value });
-    }
-    handelSubmit = (e) => {
+import { useRef, useState, useEffect, useContext } from 'react';
+import AuthContext from "../context/AuthProvider";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
+
+const LOGIN_URL = '/auth';
+
+export const Signin = () => {
+
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
+
+    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    // const [success, setSuccess] = useState(false);
+    const [userToSend, setUserToSend] = useState({});
+
+    const goTo = useNavigate();
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd, email])
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user);
+
+        // try {
+        //     const response = await axios.post(LOGIN_URL,
+        //         JSON.stringify({ user, pwd }),
+        //         {
+        //             headers: { 'Content-Type': 'application/json' },
+        //             withCredentials: true
+        //         }
+        //     );
+        //     console.log(JSON.stringify(response?.data));
+        //     //console.log(JSON.stringify(response));
+        //     const accessToken = response?.data?.accessToken;
+        //     const roles = response?.data?.roles;
+        //     setAuth({ user, pwd, roles, accessToken });
+        //     setUser('');
+        //     setPwd('');
+        //     // setSuccess(true);
+        // } catch (err) {
+        //     if (!err?.response) {
+        //         setErrMsg('No Server Response');
+        //     } else if (err.response?.status === 400) {
+        //         setErrMsg('Missing Username or Password');
+        //     } else if (err.response?.status === 401) {
+        //         setErrMsg('Unauthorized');
+        //     } else {
+        //         setErrMsg('Login Failed');
+        //     }
+        //     errRef.current.focus();
+        // }
+        setUserToSend({ email: email, password: pwd })
+        axios.post('http://127.0.0.1:8000/api/login', userToSend).then(
+            (res) => {
+                console.log(res)
+                localStorage.setItem("user", JSON.stringify(res.data))
+                goTo("/")
+            }
+        ).catch((err) => {
+            console.log(err)
+        })
     }
+
+
     return (
-        <>
-            <section class="account-section bg_img" data-background="./assets/images/account/account-bg.jpg">
-                <div class="container">
-                    <div class="padding-top padding-bottom">
-                        <div class="account-area">
-                            <div class="section-header-3">
-                                <span class="cate">hello</span>
-                                <h2 class="title">welcome back</h2>
+        <section className="account-section bg_img" data-background="./assets/images/account/account-bg.jpg">
+            <div className="container">
+                <div className="padding-top padding-bottom">
+                    <div className="account-area">
+                        <div className="section-header-3">
+                            <span className="cate">hello</span>
+                            <h2 className="title">welcome back</h2>
+                        </div>
+                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                        <form className="account-form" onSubmit={handleSubmit}>
+                            {/* {error && <Alert variant="danger">{error}</Alert>} */}
+                            <div className="form-group">
+                                <label htmlFor="username">Email:</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
+                                    required
+                                />
                             </div>
-                            <form class="account-form" onSubmit={handelSubmit}>
-                                <div class="form-group">
-                                    <label for="email2">Email<span>*</span></label>
-                                    <input type="text" placeholder="Enter Your Email" id="email2" name="email" onChange={handelChange} value={user.email} required />
-                                </div>
-                                <div class="form-group">
-                                    <label for="pass3">Password<span>*</span></label>
-                                    <input type="password" placeholder="Password" id="pass3" name="password" onChange={handelChange} value={user.password} required />
-                                </div>
-                                <div class="form-group checkgroup">
-                                    <input type="checkbox" id="bal2" required checked />
-                                    <label for="bal2">remember password</label>
-                                    <a href="#0" class="forget-pass">Forget Password</a>
-                                </div>
-                                <div class="form-group text-center">
-                                    <input type="submit" value="log in" />
-                                </div>
-                            </form>
-                            <div class="option">
-                                Don't have an account? <a href="sign-up.html">sign up now</a>
+                            <div className="form-group">
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    onChange={(e) => setPwd(e.target.value)}
+                                    value={pwd}
+                                    required
+                                />
                             </div>
-                            <div class="or"><span>Or</span></div>
-                            <ul class="social-icons">
-                                <li>
-                                    <a href="#0">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0" class="active">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0">
-                                        <i class="fab fa-google"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div className="form-group checkgroup">
+                                <input type="checkbox" id="bal2" required checked />
+                                <label for="bal2">remember password</label>
+                                <a href="#0" className="forget-pass">Forget Password</a>
+                            </div>
+                            <div className="form-group text-center">
+                                <input type="submit" value="log in" />
+                            </div>
+                            {/* {isLoading && <Spinner variant="primary" animation="border" />} */}
+                        </form>
+                        <div className="option">
+                            Don't have an account? <a href="sign-up.html">sign up now</a>
                         </div>
                     </div>
                 </div>
-            </section>
-            <Helmet>
-                <script src="assets/js/jquery-3.3.1.min.js"></script>
-                <script src="assets/js/modernizr-3.6.0.min.js"></script>
-                <script src="assets/js/plugins.js"></script>
-                <script src="assets/js/bootstrap.min.js"></script>
-                <script src="assets/js/heandline.js"></script>
-                <script src="assets/js/isotope.pkgd.min.js"></script>
-                <script src="assets/js/magnific-popup.min.js"></script>
-                <script src="assets/js/owl.carousel.min.js"></script>
-                <script src="assets/js/wow.min.js"></script>
-                <script src="assets/js/countdown.min.js"></script>
-                <script src="assets/js/odometer.min.js"></script>
-                <script src="assets/js/viewport.jquery.js"></script>
-                <script src="assets/js/nice-select.js"></script>
-                <script src="assets/js/main.js"></script>
-
-            </Helmet>
-        </>
+            </div>
+        </section>
     );
 }
