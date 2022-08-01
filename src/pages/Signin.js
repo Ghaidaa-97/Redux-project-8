@@ -1,6 +1,6 @@
 
 
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { setIsLoggedIn } from '../store/postSlice';
@@ -50,7 +50,6 @@ export const Signin = () => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
                 dispatch(setIsLoggedIn(true));
-                GoTo("/")
             }
         ).catch((err) => {
             console.log(err)

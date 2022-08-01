@@ -11,7 +11,6 @@ export default function () {
 
     const handelClick = (e, post_id) => {
         e.preventDefault();
-        alert(post_id);
         dispatch(getPost(post_id));
         GoTo("/blog_detail")
     }
