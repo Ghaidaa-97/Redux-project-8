@@ -123,7 +123,7 @@ export default function Contact() {
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
-                                <div class="contact-counter-item active">
+                                <div class="contact-counter-item">
                                     <div class="contact-counter-thumb">
                                         <i class="fas fa-users"></i>
                                     </div>

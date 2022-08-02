@@ -123,7 +123,7 @@ export default function () {
                                                 <a href="" className="buttons" onClick={(e) => {
 
                                                     handelClick(e, post.id)
-                                                }}>Read More <i className="flaticon-right"></i></a>
+                                                }}>leave a comment <i className="flaticon-right"></i></a>
                                             </div>
                                         </div>
                                     </div>

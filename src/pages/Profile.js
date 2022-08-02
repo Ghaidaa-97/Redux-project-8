@@ -1,12 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 function Profile() {
 
 const [user,setUser] =useState(JSON.parse(localStorage.getItem('user')));
-
 const handleOnChange=(e)=>{
     setUser({
         ...user,
@@ -23,6 +22,10 @@ const handleOnSubmit=(e)=>{
     .catch((err)=>{
         console.log(err)
     })
+    Swal.fire({
+        // title: <strong>Good job!</strong>,
+        icon: 'success'
+      })
 }
 return (
 <>
