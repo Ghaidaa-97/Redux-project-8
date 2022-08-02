@@ -30,20 +30,23 @@ export default function About() {
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="event-about-content">
-                                <div class="section-header-3 left-style m-0">
+                                <div class="section-header-3 left-style m-3">
                                     <span class="cate">we are Boleto </span>
                                     <h2 class="title">Get to know us</h2>
-                                    <p>
+                                    <p style={{fontSize:17,padding:30}}>
                                     Cinema connects people, acts as a starter of a conversation. It enhances imagination
                                     and shows the entire world multiple perspectives and broaden our vision and
                                     thinking. Most importantly, it connects different cultures and introduces us to the
-                                    various forms of art and adds unknown information and facts to our lives. </p>                                </div>
+                                    various forms of art and adds unknown information and facts to our lives, It is
+                                    referred to the entire film industry, as well as the place designed for the
+                                    exhibition of movies, films, etc. </p>
+                                    </div>         
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                         <div class="event-about-content">
 
-                                <img className="img-fluid" src="./assets/images/about/about01.png" alt="about" />
+                                <img  src="./assets/images/about/about01.png" alt="about" />
 
                             </div>
                         </div>

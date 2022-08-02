@@ -34,7 +34,7 @@ function Home() {
         <div className="container">
           <div className="banner-content">
             <h1 className="title  cd-headline clip">
-              <span className="d-block">book your</span> tickets for..
+              <span className="d-block">book your</span> ticket for..
               <span className="color-theme cd-words-wrapper p-0 m-0">
                 <b className="is-visible"> Movie</b>
              
@@ -67,32 +67,20 @@ function Home() {
             className="search-tab bg_img"
             data-background="./assets/images/ticket/ticket-bg01.jpg"
           >
-            <div className="row align-items-center mb--20">
-              <div className="col-lg-6 mb-20">
-                <div className="search-ticket-header">
+            <div className="row align-items-center mb--20  text center">
+              <div className="col-lg-6 mb-20 text center">
+                <div className="search-ticket-header text center">
                   <h6 className="category">welcome to Boleto </h6>
                   <h3 className="title">what are you looking for</h3>
                 </div>
               </div>
-              <div className="col-lg-6 mb-20">
-                <ul className="tab-menu ticket-tab-menu">
-                  <li className="active">
-                    <div className="tab-thumb">
-                      <img
-                        src="./assets/images/ticket/ticket-tab01.png"
-                        alt="ticket"
-                      />
-                    </div>
-                    <span>movies</span>
-                  </li>
-                </ul>
-              </div>
+             
             </div>
             <div className="tab-area">
               <div className="tab-item active">
                 <form className="ticket-search-form">
                   <div className="form-group large">
-                    <input type="text" placeholder="Search fo Movies" />
+                    <input type="text" placeholder="Search for Movies" />
                     <button type="submit">
                       <i className="fas fa-search"></i>
                     </button>
@@ -425,24 +413,6 @@ function Home() {
         </div>
       </section> */}
 
-      <section>
-      <div className="newslater-section padding-bottom">
-                <div className="container">
-                    <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
-                        <div className="newslater-wrapper">
-                            <h5 className="cate">subscribe to Boleto </h5>
-                            <h3 className="title">to get exclusive benifits</h3>
-                            <form className="newslater-form">
-                                <input type="text" placeholder="Your Email Address" />
-                                <button type="submit">subscribe</button>
-                            </form>
-                            <p>We respect your privacy, so we never share your info</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-      </section>
-
       <div class="philosophy-section   padding-bottom bg-one bg_img bg_quater_img" data-background="./assets/images/about/about.jfif">
                 <div class="container">
                     <div class="row">
@@ -477,6 +447,25 @@ function Home() {
                     </div>
                 </div>
             </div>
+
+            <section>
+      <div className="newslater-section padding-bottom">
+                <div className="container">
+                    <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
+                        <div className="newslater-wrapper">
+                            <h5 className="cate">subscribe to Boleto </h5>
+                            <h3 className="title">to get exclusive benifits</h3>
+                            <form className="newslater-form">
+                                <input type="text" placeholder="Your Email Address" />
+                                <button type="submit">subscribe</button>
+                            </form>
+                            <p>We respect your privacy, so we never share your info</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </section>
+
 
       <Helmet>
         <script src="assets/js/jquery-3.3.1.min.js"></script>
