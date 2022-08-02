@@ -55,31 +55,37 @@ export default function AddMoviesApi() {
     console.log(movies);
 
     return (
-        <div className="container mt-5 mt-5">
-            <div className="row">
-                <div className="col-md-12">
-                    <h1>Add Movies API</h1>
-                    <hr />
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <div className="form-group">
-                                                <label>Movie Title</label>
-                                                <input type="button" className="form-control" value="getMovies" onClick={handelClick} />
-                                                <small className="form-text text-muted">Enter Movie Title</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <>
+        <section class="main-page-header speaker-banner bg_img" data-background="./assets/images/banner/banner07.jpg">
+        <div class="container">
+            <div class="speaker-banner-content">
+                <h2 class="title">Movies</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>Movies adding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="account-section bg_img" data-background="./assets/images/account/account-bg.jpeg">
+            <div class="container">
+                <div class="padding-top padding-bottom">
+                    <div class="account-area">
+                        <div class="section-header-3">
+                            <h2 class="title"></h2>
+                        </div>
+
+<div class="form-group text-center">
+                                <input type="button"  value="Press me to get Movies" onClick={handelClick}/>
                             </div>
+                                                {/* <small className="form-text text-muted">Enter Movie Title</small> */}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+</>
     );
 
 }

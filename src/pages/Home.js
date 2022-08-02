@@ -35,20 +35,20 @@ function Home() {
         <div className="container">
           <div className="banner-content">
             <h1 className="title  cd-headline clip">
-              <span className="d-block">book your</span> tickets for
+              <span className="d-block">book your</span> ticket for..
               <span className="color-theme cd-words-wrapper p-0 m-0">
-                <b className="is-visible">Movie</b>
+                <b className="is-visible"> Movie</b>
 
-              </span>
-            </h1>
+              </span >
+            </h1 >
 
-            <p>
-              Safe, secure, reliable ticketing.Your ticket to live
+            <h6 style={{ color: "darkgrey" }}>
+              Safe , secure and reliable ticketing . Your ticket to live
               entertainment!
-            </p>
-          </div>
-        </div>
-      </section>
+            </h6>
+          </div >
+        </div >
+      </section >
 
       {/* {movies.map((movie) => {
         return (
@@ -62,56 +62,26 @@ function Home() {
           </div>
         );
       })} */}
-      <section className="search-ticket-section padding-top pt-lg-0">
+      < section className="search-ticket-section padding-top pt-lg-0" >
         <div className="container">
           <div
             className="search-tab bg_img"
             data-background="./assets/images/ticket/ticket-bg01.jpg"
           >
-            <div className="row align-items-center mb--20">
-              <div className="col-lg-6 mb-20">
-                <div className="search-ticket-header">
+            <div className="row align-items-center mb--20  text center">
+              <div className="col-lg-6 mb-20 text center">
+                <div className="search-ticket-header text center">
                   <h6 className="category">welcome to Boleto </h6>
                   <h3 className="title">what are you looking for</h3>
                 </div>
               </div>
-              <div className="col-lg-6 mb-20">
-                <ul className="tab-menu ticket-tab-menu">
-                  <li className="active">
-                    <div className="tab-thumb">
-                      <img
-                        src="./assets/images/ticket/ticket-tab01.png"
-                        alt="ticket"
-                      />
-                    </div>
-                    <span>movie</span>
-                  </li>
-                  <li>
-                    <div className="tab-thumb">
-                      <img
-                        src="./assets/images/ticket/ticket-tab02.png"
-                        alt="ticket"
-                      />
-                    </div>
-                    <span>events</span>
-                  </li>
-                  <li>
-                    <div className="tab-thumb">
-                      <img
-                        src="./assets/images/ticket/ticket-tab03.png"
-                        alt="ticket"
-                      />
-                    </div>
-                    <span>sports</span>
-                  </li>
-                </ul>
-              </div>
+
             </div>
             <div className="tab-area">
               <div className="tab-item active">
                 <form className="ticket-search-form">
                   <div className="form-group large">
-                    <input type="text" placeholder="Search fo Movies" />
+                    <input type="text" placeholder="Search for Movies" />
                     <button type="submit">
                       <i className="fas fa-search"></i>
                     </button>
@@ -276,7 +246,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
       {/* 
       {movies.map((movie) => {
         return (
@@ -289,7 +259,7 @@ function Home() {
         );
       })} */}
 
-      <section className="movie-section padding-top padding-bottom">
+      < section className="movie-section padding-top padding-bottom" >
         <div className="container">
           <div className="tab">
             <div className="section-header-2">
@@ -306,39 +276,40 @@ function Home() {
             <div className="tab-area mb-30-none">
               <div className="tab-item active">
 
-                <div className="row">
-                  {movies.map((movie) => (
-                    <>
-                      <div class="col-sm-6 col-lg-4">
-                        <div class="movie-grid">
-                          <div class="movie-thumb c-thumb">
-                            <NavLink to={"single_movie/" + movie.id}>
-                              {
-                                movie.from == 2 ?
-                                  <img
-                                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                  />
-                                  :
-                                  <img
-                                    src={`http://127.0.0.1:8000/images/${movie.poster_path}`}
-                                    height="540px"
-                                  />
-                              }
-                            </NavLink>
-                          </div>
-                          <div class="movie-content bg-one">
-                            <h5 class="title m-0">
-                              <NavLink to={"single_movie/" + movie.id}>{movie.title}</NavLink>
-                            </h5>
-                            <ul class="movie-rating-percent">
-                              <li>
-                                {/* <span class="content">{movie.description}</span> */}
-                              </li>
-                            </ul>
+                <div className="card1" style={{ minHeight: 300 }}>
+                  <div className="row">
+                    {movies.map((movie) => (
+                      <>
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="movie-grid">
+                            <div class="movie-thumb c-thumb">
+                              <NavLink to={"single_movie/" + movie.id}>
+                                {
+                                  movie.from == 2 ?
+                                    <img
+                                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                    />
+                                    :
+                                    <img
+                                      src={`http://127.0.0.1:8000/images/${movie.poster_path}`}
+                                      height="540px"
+                                    />
+                                }
+                              </NavLink>
+                            </div>
+                            <div class="movie-content bg-one">
+                              <p class="title m-0" style={{ textAlign: 'center' }}>
+                                <a href="movie-details.html" style={{ color: 'white' }}>{movie.title}</a>
+                              </p>
+                              {/* <ul class="movie-rating-percent">
+                              <li> */}
+                              {/* <span class="content">{movie.description}</span> */}
+                              {/* </li>
+                            </ul> */}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {/* <div className="item">
+                        {/* <div className="item">
                         <div className="movie-grid">
                           <div className="movie-thumb c-thumb">
                             <a href="#0">
@@ -363,19 +334,20 @@ function Home() {
                           </div>
                         </div>
                       </div> */}
-                    </>
-                  ))}
+                      </>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
           </div>
         </div>
-      </section>
+      </section >
 
 
 
-      <section class="client-section padding-bottom padding-top bg_img" data-background="./assets/images/client/home1.jfif">
+      {/* <section class="client-section padding-bottom padding-top bg_img" data-background="./assets/images/client/home1.jfif">
         <div class="container">
           <div class="section-header-3">
             <span class="cate">testimonials</span>
@@ -436,6 +408,59 @@ function Home() {
                 <blockquote class="client-quote">
                   "Quia voluptatum animi libero recusandae error."
                 </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      < div class="philosophy-section   padding-bottom bg-one bg_img bg_quater_img" data-background="./assets/images/about/about.jfif" >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 offset-lg-3 bg-two">
+              <div class="philosophy-content">
+                <div class="section-header-3 left-style">
+                  <span class="cate">Take look at</span>
+                  <h2 class="title">Our philosophy</h2>
+                </div>
+                <ul class="phisophy-list">
+                  <li>
+                    <div class="thumb">
+                      <img src="./assets/images/philosophy/icon1.png" alt="philosophy" />
+                    </div>
+                    <h5 class="title">Honesty & Fairness </h5>
+                  </li>
+                  <li>
+                    <div class="thumb">
+                      <img src="./assets/images/philosophy/icon2.png" alt="philosophy" />
+                    </div>
+                    <h5 class="title">Clarity & Transparency</h5>
+                  </li>
+                  <li>
+                    <div class="thumb">
+                      <img src="./assets/images/philosophy/icon3.png" alt="philosophy" />
+                    </div>
+                    <h5 class="title">Focus on Customers</h5>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
+
+      <section>
+        <div className="newslater-section padding-bottom padding-top">
+          <div className="container">
+            <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
+              <div className="newslater-wrapper">
+                <h5 className="cate">subscribe to Boleto </h5>
+                <h3 className="title">to get exclusive benifits</h3>
+                <form className="newslater-form">
+                  <input type="text" placeholder="Your Email Address" />
+                  <button type="submit">subscribe</button>
+                </form>
+                <p>We respect your privacy, so we never share your info</p>
               </div>
             </div>
           </div>
