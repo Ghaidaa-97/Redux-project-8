@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getMovies, addMovie } from "../store/MoviesSlice";
 
 function Home() {
@@ -37,7 +38,7 @@ function Home() {
               <span className="d-block">book your</span> tickets for
               <span className="color-theme cd-words-wrapper p-0 m-0">
                 <b className="is-visible">Movie</b>
-             
+
               </span>
             </h1>
 
@@ -280,15 +281,8 @@ function Home() {
       {movies.map((movie) => {
         return (
           <div key={movie.id}>
-<<<<<<< HEAD
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt="movie"
-            />
-=======
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt="movie" />
->>>>>>> 89fb0cbe7dfb984dd057221f18d44659a437be67
             <h1>{movie.title}</h1>
             <p>{movie.description}</p>
           </div>
@@ -318,7 +312,7 @@ function Home() {
                       <div class="col-sm-6 col-lg-4">
                         <div class="movie-grid">
                           <div class="movie-thumb c-thumb">
-                            <a href="movie-details.html">
+                            <NavLink to={"single_movie/" + movie.id}>
                               {
                                 movie.from == 2 ?
                                   <img
@@ -330,11 +324,11 @@ function Home() {
                                     height="540px"
                                   />
                               }
-                            </a>
+                            </NavLink>
                           </div>
                           <div class="movie-content bg-one">
                             <h5 class="title m-0">
-                              <a href="movie-details.html">{movie.title}</a>
+                              <NavLink to={"single_movie/" + movie.id}>{movie.title}</NavLink>
                             </h5>
                             <ul class="movie-rating-percent">
                               <li>
