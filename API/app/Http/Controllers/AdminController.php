@@ -26,6 +26,9 @@ class AdminController extends Controller
         return view('Admin.index');
     }
 
+
+
+    ///////////// MOVIES //////////////////
     public function movies()
     {
         $movies = movies::select('*')
@@ -33,10 +36,12 @@ class AdminController extends Controller
         return view('Admin.movies.movies', compact('movies'));
     }
 
+
     public function Addmovies()
     {
         return view('Admin.movies.addmovies');
     }
+
 
     public function storemovies(StoreadminRequest $request)
     {
@@ -84,11 +89,13 @@ class AdminController extends Controller
         return redirect()->route('admin.movies');
     }
 
+
     public function editmovies($id)
     {
         $movie = movies::find($id);
         return view('Admin.movies.movies_edits', compact('movie'));
     }
+
 
     public function updatemovies(UpdateadminRequest $request, $id)
     {
@@ -116,25 +123,39 @@ class AdminController extends Controller
         return redirect()->route('admin.movies')->with('success', 'Movie updated successfully');
     }
 
+
     public function deletemovies($id)
     {
         $movies = movies::find($id);
         $movies->delete();
         return redirect()->route('admin.movies');
     }
+    /////////// END OF Movie //////////////
 
 
 
+
+     ///////////// COMMENTS //////////////////
     public function comments()
     {
         $comments = comment::all();
         return view('Admin.comments.comments', compact('comments'));
     }
 
+    
+    public function deletecomments($id){
+        $comment =comment::find($id);
+       
+        $comment->delete();
+        
+        return redirect()->route('admin.comments')->with('Successfully deleted comment');
+    }
+    /////////// END OF Comments //////////////
 
 
 
 
+    ///////////// POST //////////////////
     public function posts()
     {
         $posts = post::all();
@@ -150,18 +171,23 @@ class AdminController extends Controller
         
         return redirect()->route('admin.posts')->with('Successfully deleted post');
     }
-    
+      /////////// END OF POST //////////////
 
+
+    
+   ///////////// User //////////////////
     public function users()
     {
         $users = User::all();
         return view('Admin.users.users', compact('users'));
     }
 
+
     public function Addusers()
     {
         return view('Admin.users.addusers');
     }
+
 
     public function storusers(StoreadminRequest $request){
     $validate = $request->validate([
@@ -182,6 +208,7 @@ class AdminController extends Controller
 
     }}
 
+
     public function deleteusers($id){
         $user = User::find($id);
         $posts =post::where ('user_id' , $id)->get();
@@ -191,13 +218,90 @@ class AdminController extends Controller
         $user->delete();   
         return redirect()->route('admin.users')->with('success', 'user deleted successfully');
     }
+    /////////// END OF USER //////////////
 
 
+    ///////////// Tickets //////////////////
     public function tickets()
     {
-        $tikits = tikits::all();
-        return view('Admin.tikits.tikits', compact('tikits'));
+        $tickets = tikits::all();
+        return view('Admin.tickets.tickets', compact('tickets'));
     }
+
+    public function Addtickets()
+    {   $movies=movies::all();
+        return view('Admin.tickets.addtickets' , compact('movies'));
+    }
+
+
+    public function storetickets(StoreadminRequest $request){
+        $validate = $request->validate([
+            'date' => 'required',
+            'time_start' => 'required|unique:tikits',
+            'time_end' => 'required|unique:tikits',
+            'price' => 'required',
+            'quantity' => 'required',
+            'movie_id' => 'required',
+
+        ]);
+    
+        if ($request == true) {
+            $tickets = new tikits;
+            $tickets->date = $request->input('date');
+            $tickets->time_start = $request->input('time_start');
+            $tickets->time_end = $request->input('time_end');
+            $tickets->price = $request->input('price');
+            $tickets->quantity = $request->input('quantity');
+            $tickets->movie_id = $request->input('movie_id');
+
+
+          
+
+          
+    
+            $tickets->save();
+            return redirect()->route('admin.tickets')->with('success', 'Ticket added successfully');
+    
+        }}
+
+        public function deletetickets($id){
+            $ticket =tikits::find($id);
+            $ticket->delete();
+            
+            return redirect()->route('admin.tickets')->with('Successfully deleted ticket');
+        }
+
+
+        public function edittickets($id){
+
+            $ticket = tikits::findOrFail($id);
+
+        return view('Admin.tickets.tickets_edits', compact('ticket'));
+        }
+
+
+        public function updatetickets(UpdateadminRequest $request, $id){
+
+            $validatedData = $request->validate([
+                'date' => 'required',
+                'time_start' => 'required',
+                'time_end' => 'required',
+                'price' => 'required',
+                'quantity' => 'required',
+                // 'movie_id' => 'required',
+              
+            ]);
+            tikits::whereId($id)->update($validatedData);
+    
+            return redirect()->route('admin.tickets')->with('Successfully updated ticket');
+
+
+            
+
+        }
+
+
+    /////////// END OF Tickets /////////////////
 
 
 

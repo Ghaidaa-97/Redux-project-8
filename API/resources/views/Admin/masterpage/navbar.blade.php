@@ -316,25 +316,25 @@
                         </li>
                         <li class="active">
                             <a href="{{route('admin.posts')}}">
-                                <i class="material-icons">Posts</i>
+                                <i class="material-icons">description</i>
                                 <span>Posts</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a href="{{route('admin.posts')}}">
-                                <i class="material-icons">Comments</i>
+                            <a href="{{route('admin.comments')}}">
+                                <i class="material-icons">question_answer</i>
                                 <span>Comments</span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="{{route('admin.users')}}">
-                                <i class="material-icons">Users</i>
+                                <i class="material-icons">account_box</i>
                                 <span>Users</span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="{{route('admin.tickets')}}">
-                                <i class="material-icons">ticket</i>
+                                <i class="material-icons">theaters</i>
                                 <span>tickets</span>
                             </a>
                         </li>
