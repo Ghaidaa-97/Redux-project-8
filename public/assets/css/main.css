@@ -888,11 +888,32 @@ input:focus {
 }
 
 input[type="submit"] {
-  cursor: pointer;
-  background-color: #9aace5;
-  color: #ffffff;
-  font-weight: 700;
+  /* /* cursor: pointer; */
+  /* background-color: #9aace5;
+  /* color: #ffffff; */
+  /* font-weight: 700;
   padding: 0;
+  /* background-image: -webkit-linear-gradient(45deg, #f54646 0%, #f53da1 100%); */
+  /* border-radius: 25px;
+  /* width: 200px; */
+  /* margin-top: 10px;
+  border: 1px solid #11326f;
+  transition: all ease 0.3s; */ */ */ */ */
+
+  font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 30px;
+    border: 1px solid #11326f;
+    padding: 9px 27px;
+    border-radius: 25px;
+    margin: 0 5px 10px;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    background: -webkit-linear-gradient(169deg, #5560ff 0%, #ff4343 100%);
+    width: 180px;
+    margin-top: 30px;
+
 }
 
 .bg_img {
@@ -2473,6 +2494,7 @@ input[type="submit"] {
 .speaker-banner::before {
   opacity: .8;
   background: -webkit-gradient(linear, left top, right top, from(#0f5ae0), to(#7400ba));
+  
   background: linear-gradient(90deg, #0f5ae0 0%, #7400ba 100%);
   left: 0px;
   top: 0px;

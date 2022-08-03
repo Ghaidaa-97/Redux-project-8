@@ -1,7 +1,7 @@
 export default function Footer() {
 
     return (
-        <footer className="footer-section">
+        <footer className="footer-section mt-5">
             {/* <div className="newslater-section padding-bottom">
                 <div className="container">
                     <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">

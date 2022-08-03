@@ -46,6 +46,11 @@ function Home() {
               Safe , secure and reliable ticketing . Your ticket to live
               entertainment!
             </h6>
+           
+            <div class="form-group text-center">
+                                <NavLink to="/about"><input type="submit"  value="Read More" /></NavLink>
+                            </div>
+                            
           </div >
         </div >
       </section >
@@ -62,7 +67,7 @@ function Home() {
           </div>
         );
       })} */}
-      < section className="search-ticket-section padding-top pt-lg-0" >
+      {/* < section className="search-ticket-section padding-top pt-lg-0" >
         <div className="container">
           <div
             className="search-tab bg_img"
@@ -247,8 +252,8 @@ function Home() {
           </div>
         </div>
       </section >
-      {/* 
-      {movies.map((movie) => {
+      {/*  */}
+      {/* {movies.map((movie) => {
         return (
           <div key={movie.id}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -257,7 +262,7 @@ function Home() {
             <p>{movie.description}</p>
           </div>
         );
-      })} */}
+      })} */} 
 
       < section className="movie-section padding-top padding-bottom" >
         <div className="container">
@@ -269,25 +274,26 @@ function Home() {
               </div>
               <ul className="tab-menu">
                 <li className="active">now showing</li>
-                <li>coming soon</li>
-                <li>exclusive</li>
+                {/* <li>coming soon</li> */}
+                {/* <li>exclusive</li> */}
               </ul>
             </div>
             <div className="tab-area mb-30-none">
               <div className="tab-item active">
 
-                <div className="card1" style={{ minHeight: 300 }}>
+                <div className="card1">
                   <div className="row">
                     {movies.map((movie) => (
                       <>
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3" >
                           <div class="movie-grid">
-                            <div class="movie-thumb c-thumb">
+                            <div class="movie-thumb c-thumb" >
                               <NavLink to={"single_movie/" + movie.id}>
                                 {
                                   movie.from == 2 ?
                                     <img
                                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                      height="540px"
                                     />
                                     :
                                     <img
@@ -297,7 +303,7 @@ function Home() {
                                 }
                               </NavLink>
                             </div>
-                            <div class="movie-content bg-one">
+                            <div class="movie-content bg-one" style={{ height: 100 }}>
                               <p class="title m-0" style={{ textAlign: 'center' }}>
                                 <a href="movie-details.html" style={{ color: 'white' }}>{movie.title}</a>
                               </p>

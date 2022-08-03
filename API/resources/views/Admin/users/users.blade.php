@@ -35,7 +35,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Password</th>
+                                <th>Phone Number</th>
                              
                             </tr>
                         </thead>
@@ -47,7 +47,7 @@
                                 <td>{{$user->email}}</td>
                                 
                                   
-                                    <td>{{$user->password}}</td>
+                                    <td>{{$user->phone}}</td>
                                 {{-- <td><a href="{{route('admin.movies_edit' , $movie->id )}}" class="btn btn-warning ">Edit Movie</a></td> --}}
                                 <td><form action="{{route('admin.users_delete' , $user->id )}}" method="POST">
                                     @csrf

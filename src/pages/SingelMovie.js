@@ -33,7 +33,7 @@ export default function Single_movie() {
     {/* <!-- ==========Header-Section========== -->
 
     <!-- ==========Banner-Section========== --> */}
-            <section className="details-banner bg_img" data-background=
+            <section className="details-banner bg_img " data-background=
                 {
                     movie.from == 2 ? b
 
@@ -41,7 +41,7 @@ export default function Single_movie() {
                         b
 
                 }>
-                <div className="container">
+                <div className="container " >
                     <div className="details-banner-wrapper">
                         <div className="details-banner-thumb">
                             {
@@ -65,7 +65,9 @@ export default function Single_movie() {
                                 <a href="#0">Telegu</a>
                                 <a href="#0">Tamil</a>
                             </div>
+                            <div className="container my-5">
                             <p>{movie.description}</p>
+                            </div>
                             <div className="social-and-duration">
                                 <div className="duration-area">
                                     <div className="item">
@@ -111,6 +113,7 @@ export default function Single_movie() {
                     </div>
                 </div>
             </section >
+           
 
             {/* <!-- ==========Book-Section========== --></> */}
             < Helmet >
