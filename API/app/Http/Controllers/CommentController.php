@@ -29,8 +29,8 @@ class CommentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'message' => 'required|string|max:255',
-            'user_id' => 'required|string|max:255',
-            // 'post_id' => 'required|string|max:255',
+            'user_id' => 'required',
+             'post_id' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);

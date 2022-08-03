@@ -54,7 +54,14 @@ export const deletePost = createAsyncThunk(
 export const addComment = createAsyncThunk(
     "post/addComment",
     async (comment, thunkAPI) => {
-        const response = await axios.post("http://localhost:8000/api/comments", comment);
+        const response = await axios.post("http://localhost:8000/api/comments", comment).then(res => {
+            console.log(res.data);
+
+        }).catch(err => {
+            console.log(err);
+        }
+        );
+
         console.log(response);
 
         thunkAPI.dispatch(getPost(comment.post_id));

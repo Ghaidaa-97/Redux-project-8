@@ -36,7 +36,7 @@
                                 <th>Date</th>
                                 <th>Time Start</th>
                                 <th>Time End</th>
-                               
+
                                 <th>Quantity</th>
                                 <th>Price</th>
 
@@ -49,11 +49,12 @@
                                 <td>{{$ticket->date	}}</td>
                                 <td>{{$ticket->time_start}}</td>
                                 <td>{{$ticket->time_end}}</td>
-                               
+
                                 <td>{{$ticket->quantity}}</td>
                                 <td>{{$ticket->price}}</td>
-                              
-                                 
+                                <td>{{$ticket->title}}</td>
+
+
                                 <td><a href="{{route('admin.tickets_edit' , $ticket->id )}}" class="btn btn-warning ">Edit Ticket</a></td>
                                 <td><form action="{{route('admin.tickets_delete' , $ticket->id )}}" method="POST">
                                     @csrf
