@@ -75,7 +75,7 @@ export default function About() {
                                     <a href="./assets/images/gallery/gallery06.jpg" class="img-pop">
                                         <i class="flaticon-loupe"></i>
                                     </a>
-                                    <img src="./assets/images/gallery/gallery06.jpg" alt="gallery" />
+                                    <img src="./assets/images/gallery/cema1.jpg" alt="gallery" style={{width:287 , height:190}}/>
                                 </div>
                             </div>
                             <div class="gallery-item two">
@@ -83,7 +83,7 @@ export default function About() {
                                     <a href="./assets/images/gallery/gallery13.jpg" class="img-pop">
                                         <i class="flaticon-loupe"></i>
                                     </a>
-                                    <img src="./assets/images/gallery/gallery13.jpg" alt="gallery" />
+                                    <img src="./assets/images/gallery/cema5.jpg" alt="gallery" style={{width:287 , height:270}} />
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ export default function About() {
                                             <a href="./assets/images/gallery/gallery10.jpg" class="img-pop">
                                                 <i class="flaticon-loupe"></i>
                                             </a>
-                                            <img src="./assets/images/gallery/gallery10.jpg" alt="gallery" />
+                                            <img src="./assets/images/gallery/cema3.jpg" alt="gallery" style={{width:287 , height:270}}/>
                                         </div>
                                     </div>
                                 </div>
