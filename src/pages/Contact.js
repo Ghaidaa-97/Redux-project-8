@@ -44,7 +44,7 @@ export default function Contact() {
             <div className="container">
                 <section class="contact-section padding-top">
                     <div class="contact-container">
-                        <div class="bg-thumb bg_img" data-background="./assets/images/contact/contact.jfif"></div>
+                        <div class="bg-thumb bg_img" data-background="./assets/images/contact/contact.JFIF"></div>
                         <div class="container">
                             <div class="row justify-content-between">
                                 <div class="col-md-7 col-lg-6 col-xl-5">
