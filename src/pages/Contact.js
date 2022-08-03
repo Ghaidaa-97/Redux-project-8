@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function Contact() {
+    window.scrollTo(20, 0)
 
     const [contact, setContact] = useState({ name: "", email: "", message: "" });
 
