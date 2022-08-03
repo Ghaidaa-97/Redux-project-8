@@ -91,6 +91,7 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = movies::find($id);
+
         if (is_null($movie)) {
             return response()->json(['message' => 'Movie not found'], 404);
         }

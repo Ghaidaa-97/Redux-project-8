@@ -11,6 +11,9 @@ export default function Nav() {
 
     useEffect(() => {
         setDomain(window.location.pathname);
+        if (JSON.parse(localStorage.getItem('user'))) {
+            dispatch(setIsLoggedIn(true));
+        }
     }, [])
 
 

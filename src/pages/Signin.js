@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const Signin = () => {
 
+    const [domain, setDomain] = useState(window.location.pathname);
 
     const userRef = useRef();
     const errRef = useRef();
@@ -32,7 +33,7 @@ export const Signin = () => {
         userRef.current.focus();
         if (JSON.parse(localStorage.getItem('user'))) {
             dispatch(setIsLoggedIn(true));
-            GoTo('/profile');
+
         }
     }, [isLoggedIn])
 
@@ -50,6 +51,8 @@ export const Signin = () => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
                 dispatch(setIsLoggedIn(true));
+                setDomain(window.location.pathname);
+                GoTo(domain);
             }
         ).catch((err) => {
             console.log(err)

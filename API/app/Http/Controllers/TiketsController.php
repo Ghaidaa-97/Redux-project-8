@@ -14,7 +14,7 @@ class TiketsController extends Controller
      */
     public function index()
     {
-        $tikets = tikits::all();
+        $tikets = tikits::where("movie_id",request('movie_id'))->get();
         return response()->json($tikets);
     }
 

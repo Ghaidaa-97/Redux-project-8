@@ -8,6 +8,8 @@ use App\Models\comment;
 use App\Models\post;
 use App\Models\User;
 use App\Models\tikits;
+use App\Models\booking;
+
 use Validator ;
 use App\Http\Requests\StoreadminRequest;
 use App\Http\Requests\UpdateadminRequest;
@@ -126,7 +128,16 @@ class AdminController extends Controller
 
     public function deletemovies($id)
     {
+        $ticket= tikits::where('movie_id', $id)->first();
+
+            $booking = booking::where('tikit_id', $ticket->id)->delete();
+
+        $ticket->delete();
+
         $movies = movies::find($id);
+
+
+
         $movies->delete();
         return redirect()->route('admin.movies');
     }
@@ -142,12 +153,12 @@ class AdminController extends Controller
         return view('Admin.comments.comments', compact('comments'));
     }
 
-    
+
     public function deletecomments($id){
         $comment =comment::find($id);
-       
+
         $comment->delete();
-        
+
         return redirect()->route('admin.comments')->with('Successfully deleted comment');
     }
     /////////// END OF Comments //////////////
@@ -162,19 +173,19 @@ class AdminController extends Controller
         return view('Admin.posts.posts', compact('posts'));
     }
 
-  
- 
+
+
     public function deleteposts($id){
         $post =post::find($id);
         $comments =comment::where ('post_id' , $id)->delete();
         $post->delete();
-        
+
         return redirect()->route('admin.posts')->with('Successfully deleted post');
     }
       /////////// END OF POST //////////////
 
 
-    
+
    ///////////// User //////////////////
     public function users()
     {
@@ -201,7 +212,7 @@ class AdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-      
+
 
         $user->save();
         return redirect()->route('admin.users')->with('success', 'user added successfully');
@@ -215,7 +226,7 @@ class AdminController extends Controller
         foreach($posts as $post){
         $post->user_id = 1 ;
         $post->update(); }
-        $user->delete();   
+        $user->delete();
         return redirect()->route('admin.users')->with('success', 'user deleted successfully');
     }
     /////////// END OF USER //////////////
@@ -224,7 +235,7 @@ class AdminController extends Controller
     ///////////// Tickets //////////////////
     public function tickets()
     {
-        $tickets = tikits::all();
+        $tickets = tikits::join('movies', 'tikits.movie_id', '=', 'movies.id')->select('tikits.*', 'movies.title')->get();
         return view('Admin.tickets.tickets', compact('tickets'));
     }
 
@@ -244,7 +255,7 @@ class AdminController extends Controller
             'movie_id' => 'required',
 
         ]);
-    
+
         if ($request == true) {
             $tickets = new tikits;
             $tickets->date = $request->input('date');
@@ -255,19 +266,19 @@ class AdminController extends Controller
             $tickets->movie_id = $request->input('movie_id');
 
 
-          
 
-          
-    
+
+
+
             $tickets->save();
             return redirect()->route('admin.tickets')->with('success', 'Ticket added successfully');
-    
+
         }}
 
         public function deletetickets($id){
             $ticket =tikits::find($id);
             $ticket->delete();
-            
+
             return redirect()->route('admin.tickets')->with('Successfully deleted ticket');
         }
 
@@ -289,14 +300,14 @@ class AdminController extends Controller
                 'price' => 'required',
                 'quantity' => 'required',
                 // 'movie_id' => 'required',
-              
+
             ]);
             tikits::whereId($id)->update($validatedData);
-    
+
             return redirect()->route('admin.tickets')->with('Successfully updated ticket');
 
 
-            
+
 
         }
 
