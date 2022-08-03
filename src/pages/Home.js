@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getMovies, addMovie } from "../store/MoviesSlice";
 
 function Home() {
@@ -37,17 +38,22 @@ function Home() {
               <span className="d-block">book your</span> ticket for..
               <span className="color-theme cd-words-wrapper p-0 m-0">
                 <b className="is-visible"> Movie</b>
-             
-              </span>
-            </h1>
 
-            <h6 style={{color:"darkgrey"}}>
+              </span >
+            </h1 >
+
+            <h6 style={{ color: "darkgrey" }}>
               Safe , secure and reliable ticketing . Your ticket to live
               entertainment!
             </h6>
-          </div>
-        </div>
-      </section>
+           
+            <div class="form-group text-center">
+                                <NavLink to="/about"><input type="submit"  value="Read More" /></NavLink>
+                            </div>
+                            
+          </div >
+        </div >
+      </section >
 
       {/* {movies.map((movie) => {
         return (
@@ -61,7 +67,7 @@ function Home() {
           </div>
         );
       })} */}
-      <section className="search-ticket-section padding-top pt-lg-0">
+      {/* < section className="search-ticket-section padding-top pt-lg-0" >
         <div className="container">
           <div
             className="search-tab bg_img"
@@ -74,7 +80,7 @@ function Home() {
                   <h3 className="title">what are you looking for</h3>
                 </div>
               </div>
-             
+
             </div>
             <div className="tab-area">
               <div className="tab-item active">
@@ -245,9 +251,9 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
-      {/* 
-      {movies.map((movie) => {
+      </section >
+      {/*  */}
+      {/* {movies.map((movie) => {
         return (
           <div key={movie.id}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -256,9 +262,9 @@ function Home() {
             <p>{movie.description}</p>
           </div>
         );
-      })} */}
+      })} */} 
 
-      <section className="movie-section padding-top padding-bottom">
+      < section className="movie-section padding-top padding-bottom" >
         <div className="container">
           <div className="tab">
             <div className="section-header-2">
@@ -268,48 +274,48 @@ function Home() {
               </div>
               <ul className="tab-menu">
                 <li className="active">now showing</li>
-                <li>coming soon</li>
-                <li>exclusive</li>
+                {/* <li>coming soon</li> */}
+                {/* <li>exclusive</li> */}
               </ul>
             </div>
             <div className="tab-area mb-30-none">
               <div className="tab-item active">
 
-              <div className="card1" style={{minHeight:300}}>
-                <div className="row">
-                  {movies.map((movie) => (
-                    <>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="movie-grid">
-                          <div class="movie-thumb c-thumb">
-                            <a href="movie-details.html">
-                              {
-                                movie.from == 2 ?
-                                  <img
-                                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                    
-                                  />
-                                  :
-                                  <img
-                                    src={`http://127.0.0.1:8000/images/${movie.poster_path}`}
-                                    height="540px"
-                                  />
-                              }
-                            </a>
-                          </div>
-                          <div class="movie-content bg-one">
-                            <p class="title m-0" style={{textAlign:'center'}}>
-                              <a href="movie-details.html" style={{color:'white'}}>{movie.title}</a>
-                            </p>
-                            {/* <ul class="movie-rating-percent">
+                <div className="card1">
+                  <div className="row">
+                    {movies.map((movie) => (
+                      <>
+                        <div class="col-sm-6 col-lg-3" >
+                          <div class="movie-grid">
+                            <div class="movie-thumb c-thumb" >
+                              <NavLink to={"single_movie/" + movie.id}>
+                                {
+                                  movie.from == 2 ?
+                                    <img
+                                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                      height="540px"
+                                    />
+                                    :
+                                    <img
+                                      src={`http://127.0.0.1:8000/images/${movie.poster_path}`}
+                                      height="540px"
+                                    />
+                                }
+                              </NavLink>
+                            </div>
+                            <div class="movie-content bg-one" style={{ height: 100 }}>
+                              <p class="title m-0" style={{ textAlign: 'center' }}>
+                                <a href="movie-details.html" style={{ color: 'white' }}>{movie.title}</a>
+                              </p>
+                              {/* <ul class="movie-rating-percent">
                               <li> */}
-                                {/* <span class="content">{movie.description}</span> */}
+                              {/* <span class="content">{movie.description}</span> */}
                               {/* </li>
                             </ul> */}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {/* <div className="item">
+                        {/* <div className="item">
                         <div className="movie-grid">
                           <div className="movie-thumb c-thumb">
                             <a href="#0">
@@ -334,8 +340,8 @@ function Home() {
                           </div>
                         </div>
                       </div> */}
-                    </>
-                  ))}
+                      </>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -343,7 +349,7 @@ function Home() {
 
           </div>
         </div>
-      </section>
+      </section >
 
 
 
@@ -414,57 +420,57 @@ function Home() {
         </div>
       </section> */}
 
-      <div class="philosophy-section   padding-bottom bg-one bg_img bg_quater_img" data-background="./assets/images/about/about.jfif">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-9 offset-lg-3 bg-two">
-                            <div class="philosophy-content">
-                                <div class="section-header-3 left-style">
-                                    <span class="cate">Take look at</span>
-                                    <h2 class="title">Our philosophy</h2>
-                                </div>
-                                <ul class="phisophy-list">
-                                    <li>
-                                        <div class="thumb">
-                                            <img src="./assets/images/philosophy/icon1.png" alt="philosophy" />
-                                        </div>
-                                        <h5 class="title">Honesty & Fairness </h5>
-                                    </li>
-                                    <li>
-                                        <div class="thumb">
-                                            <img src="./assets/images/philosophy/icon2.png" alt="philosophy" />
-                                        </div>
-                                        <h5 class="title">Clarity & Transparency</h5>
-                                    </li>
-                                    <li>
-                                        <div class="thumb">
-                                            <img src="./assets/images/philosophy/icon3.png" alt="philosophy" />
-                                        </div>
-                                        <h5 class="title">Focus on Customers</h5>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+      < div class="philosophy-section   padding-bottom bg-one bg_img bg_quater_img" data-background="./assets/images/about/about.jfif" >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 offset-lg-3 bg-two">
+              <div class="philosophy-content">
+                <div class="section-header-3 left-style">
+                  <span class="cate">Take look at</span>
+                  <h2 class="title">Our philosophy</h2>
                 </div>
+                <ul class="phisophy-list">
+                  <li>
+                    <div class="thumb">
+                      <img src="./assets/images/philosophy/icon1.png" alt="philosophy" />
+                    </div>
+                    <h5 class="title">Honesty & Fairness </h5>
+                  </li>
+                  <li>
+                    <div class="thumb">
+                      <img src="./assets/images/philosophy/icon2.png" alt="philosophy" />
+                    </div>
+                    <h5 class="title">Clarity & Transparency</h5>
+                  </li>
+                  <li>
+                    <div class="thumb">
+                      <img src="./assets/images/philosophy/icon3.png" alt="philosophy" />
+                    </div>
+                    <h5 class="title">Focus on Customers</h5>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
+        </div>
+      </div >
 
-            <section>
-      <div className="newslater-section padding-bottom">
-                <div className="container">
-                    <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
-                        <div className="newslater-wrapper">
-                            <h5 className="cate">subscribe to Boleto </h5>
-                            <h3 className="title">to get exclusive benifits</h3>
-                            <form className="newslater-form">
-                                <input type="text" placeholder="Your Email Address" />
-                                <button type="submit">subscribe</button>
-                            </form>
-                            <p>We respect your privacy, so we never share your info</p>
-                        </div>
-                    </div>
-                </div>
+      <section>
+        <div className="newslater-section padding-bottom padding-top">
+          <div className="container">
+            <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
+              <div className="newslater-wrapper">
+                <h5 className="cate">subscribe to Boleto </h5>
+                <h3 className="title">to get exclusive benifits</h3>
+                <form className="newslater-form">
+                  <input type="text" placeholder="Your Email Address" />
+                  <button type="submit">subscribe</button>
+                </form>
+                <p>We respect your privacy, so we never share your info</p>
+              </div>
             </div>
+          </div>
+        </div>
       </section>
 
 

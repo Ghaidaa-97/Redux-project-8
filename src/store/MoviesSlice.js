@@ -14,7 +14,7 @@ export const getMovies = createAsyncThunk(
 export const getMovie = createAsyncThunk(
     "movies/getMovie",
     async (id, thunkAPI) => {
-        const response = await axios.get("http://localhost:8000/api/movies/" + id);
+        const response = await axios.get("http://localhost:8000/api/movies/" + id)
         return response.data;
     }
 );
@@ -30,7 +30,16 @@ export const addMovie = createAsyncThunk(
 
 const initialState = {
     movies: [],
-    movie: {},
+    movie: {
+        title: "",
+        description: "",
+        release_date: "",
+        rating: "",
+        poster_path: "",
+        backdrop_path: "",
+        trailer: "",
+        from: 2
+    },
     loading: false,
     error: null
 }

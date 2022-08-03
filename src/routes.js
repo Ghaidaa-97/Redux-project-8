@@ -21,6 +21,7 @@ import Footer from "./components/Footer";
 import AddPost from "./pages/AddPost";
 import EditPost from "./pages/EditPost";
 import AddMoviesApi from "./pages/AddMoviesApi";
+import Single_movie from "./pages/SingelMovie";
 
 
 //import your css here (if you have any)
@@ -37,6 +38,9 @@ export default function AppRoutes() {
             <Routes> {/* <Routes> is a component that renders your routes.*/}
                 {/* add your routes here  */}
                 <Route path="/" element={<Home />} />
+
+                <Route path="/single_movie/:id" element={<Single_movie />} />
+
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/sign-up" element={<Register />} />

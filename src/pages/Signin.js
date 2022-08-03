@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 export const Signin = () => {
-
+    window.scrollTo(20, 0)
 
     const userRef = useRef();
     const errRef = useRef();

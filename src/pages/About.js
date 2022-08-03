@@ -3,6 +3,7 @@
 
 
 export default function About() {
+    window.scrollTo(20, 0)
 
     return (
         <>

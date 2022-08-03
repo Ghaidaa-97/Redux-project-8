@@ -16,28 +16,25 @@ export default function Nav() {
 
     return (
 
-     <header class="header-section">
-                <div class="header-wrapper">
+        <header class="header-section">
+            <div class="header-wrapper">
                 {/* <div class="logo mr-auto ">
                         <NavLink to="/">
                             <img src="./assets/images/logo/logo.png" alt="logo" />
                         </NavLink>
                     </div> */}
-                    <div class="container">
-                    
+                <div class="container">
+
                     <ul class="menu ">
-                    <li class="logo mr-auto ">
+                        <li class="logo mr-auto ">
                             <img src="./assets/images/logo/logo.png" alt="logo" />
                         </li>
-                   
+
                         <li>
                             <NavLink to="/"  >Home</NavLink>
                         </li>
                         <li>
                             <NavLink to="/blog"  >Blog</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/profile"  >Profile</NavLink>
                         </li>
                         <li>
                             <NavLink to="/About">About Us</NavLink>
@@ -51,24 +48,30 @@ export default function Nav() {
                                     <NavLink to="/sign-in">Sign In</NavLink>
                                 </li>
                             </> :
-                            <li class="header-button pr-0 ml-auto">
-                                <NavLink to={domain} onClick={
-                                    (e) => {
-                                        e.preventDefault();
-                                        localStorage.removeItem('user');
-                                        dispatch(setIsLoggedIn(false));
-                                    }
-                                }>Logout</NavLink>
-                            </li>}
+                            <>
+                                <li>
+                                    <NavLink to="/profile"  >Profile</NavLink>
+                                </li>
+                                <li class="header-button pr-0 ml-auto">
+                                    <NavLink to={domain} onClick={
+                                        (e) => {
+                                            e.preventDefault();
+                                            localStorage.removeItem('user');
+                                            dispatch(setIsLoggedIn(false));
+                                        }
+                                    }>Logout</NavLink>
+                                </li>
+                            </>
+                        }
 
                     </ul>
-                    </div>
-                    <div class="header-bar d-lg-none">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
                 </div>
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </header>
 
     );
