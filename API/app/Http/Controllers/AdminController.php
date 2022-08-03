@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        return view('Admin.index');
+     return redirect()->route('admin.movies');;
     }
 
 
@@ -314,7 +314,17 @@ class AdminController extends Controller
 
     /////////// END OF Tickets /////////////////
 
+        public function bookings(){
+            $bookings = booking::join('tikits', 'bookings.tikit_id', '=', 'tikits.id')->select('bookings.*', 'tikits.date', 'tikits.time_start', 'tikits.time_end', 'tikits.price', 'tikits.quantity', 'tikits.movie_id')->join('users' , 'bookings.user_id', '=', 'users.id')->select('bookings.*', 'users.name')->get();
+            return view('Admin.bookings.bookings', compact('bookings'));
+        }
 
+   public function deletebooking($id){
+        $booking = booking::find($id);
+        $booking->delete();
+
+        return redirect()->route('admin.bookings')->with('Successfully deleted booking');
+    }
 
 
 

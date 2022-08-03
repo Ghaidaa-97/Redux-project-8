@@ -120,7 +120,7 @@
                                                 <i class="material-icons">delete_forever</i>
                                             </div>
                                             <div class="menu-info">
-                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <h4><b>Abood khashashneh</b> </h4>
                                                 <p>
                                                     <i class="material-icons">access_time</i> 3 hours ago
                                                 </p>
@@ -277,7 +277,7 @@
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="image">
-                        <img src="images/user.png" width="48" height="48" alt="User" />
+                        <img src={{asset("images/user.png")}} width="48" height="48" alt="User" />
                     </div>
                     <div class="info-container">
                         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
@@ -292,7 +292,7 @@
                                 <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                                 <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                                 <li role="seperator" class="divider"></li>
-                                <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                                <li><a href="{{route('admin.logout')}}"><i class="material-icons">input</i>Sign Out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -301,13 +301,8 @@
                 <!-- Menu -->
                 <div class="menu">
                     <ul class="list">
-                        <li class="header">MAIN NAVIGATION</li>
-                        <li class="active">
-                            <a href="admin">
-                                <i class="material-icons">home</i>
-                                <span>Home</span>
-                            </a>
-                        </li>
+                        <li class="header">Boleto</li>
+
                         <li class="active">
                             <a href="{{route('admin.movies')}}">
                                 <i class="material-icons">movie</i>
@@ -336,6 +331,12 @@
                             <a href="{{route('admin.tickets')}}">
                                 <i class="material-icons">theaters</i>
                                 <span>tickets</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="{{route('admin.bookings')}}">
+                                <i class="material-icons">theaters</i>
+                                <span>bookings</span>
                             </a>
                         </li>
 
