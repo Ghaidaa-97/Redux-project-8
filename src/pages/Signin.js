@@ -10,12 +10,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 export const Signin = () => {
-<<<<<<< HEAD
     window.scrollTo(20, 0)
-=======
 
     const [domain, setDomain] = useState(window.location.pathname);
->>>>>>> 16f8f30c224668d2b4925a02c93f00142506b014
 
     const userRef = useRef();
     const errRef = useRef();

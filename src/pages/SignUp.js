@@ -38,6 +38,8 @@ export const Register = () => {
     const [userToSend, setUserToSend] = useState({})
 
     const isLoggedIn = useSelector(state => state.posts.isLoggedIn);
+    const [err, setErr] = useState({});
+
     const dispatch = useDispatch();
 
     const GoTo = useNavigate();
@@ -81,7 +83,8 @@ export const Register = () => {
                 dispatch(setIsLoggedIn(true))
             }
         ).catch((err) => {
-            console.log(err)
+            setErrMsg("The email has already been taken.")
+            console.log(errMsg)
         })
     }
     useEffect(() => {

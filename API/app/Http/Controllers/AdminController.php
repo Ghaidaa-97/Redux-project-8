@@ -130,9 +130,10 @@ class AdminController extends Controller
     {
         $ticket= tikits::where('movie_id', $id)->first();
 
-            $booking = booking::where('tikit_id', $ticket->id)->delete();
-
+        if($ticket){
+        $booking = booking::where('tikit_id', $ticket->id)->delete();
         $ticket->delete();
+        }
 
         $movies = movies::find($id);
 
@@ -149,7 +150,8 @@ class AdminController extends Controller
      ///////////// COMMENTS //////////////////
     public function comments()
     {
-        $comments = comment::all();
+        $comments = comment::join('users', 'comments.user_id', '=', 'users.id')
+            ->select( 'comments.id', 'comments.message', 'comments.created_at', 'users.name')->get();
         return view('Admin.comments.comments', compact('comments'));
     }
 

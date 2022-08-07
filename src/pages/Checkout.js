@@ -65,7 +65,7 @@ export default function CheckOut() {
                     <div className="container">
                         <div className="details-banner-wrapper">
                             <div className="details-banner-content style-two">
-                                <h3 className="title">{movie.title}</h3>
+                                <h3 className="title ">{movie.title}</h3>
 
 
                             </div>
@@ -85,9 +85,9 @@ export default function CheckOut() {
                                 <span className="date">MON, SEP 09 2020</span>
                                 <select className="select-bar" onChange={handelChange} >
 
-                                    <option value="none">Select a time</option>
+                                    <option className='bg-dark' value="none">Select a time</option>
                                     {tickets.map(ticket => (
-                                        <option value={ticket.id}>{ticket.time_start} - {ticket.time_end}</option>
+                                        <option className='bg-dark' value={ticket.id}>{ticket.time_start} - {ticket.time_end}</option>
                                     ))}
                                 </select>
                             </div>
