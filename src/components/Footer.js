@@ -26,27 +26,22 @@ export default function Footer() {
                     </div>
                     <ul className="social-icons">
                         <li>
-                            <a href="#0">
+                            <a href="www.facebook.com">
                                 <i className="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#0" className="active">
+                            <a href="www.twitter.com" className="active">
                                 <i className="fab fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#0">
-                                <i className="fab fa-pinterest-p"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#0">
+                            <a href="www.google.com">
                                 <i className="fab fa-google"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#0">
+                            <a href="www.instagram.com">
                                 <i className="fab fa-instagram"></i>
                             </a>
                         </li>

@@ -8,23 +8,25 @@ export default function About() {
     return (
         <>
 
-<section class="main-page-header speaker-banner bg_img" data-background="./assets/images/banner/banner07.jpg">
-        <div class="container">
-            <div class="speaker-banner-content">
-                <h2 class="title">about us</h2>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="index.html">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        about us
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <section class="main-page-header speaker-banner bg_img" style={{
+                backgroundImage: "url('image')"
+            }}>
+                <div class="container" >
+                    <div class="speaker-banner-content">
+                        <h2 class="title">about us</h2>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="index.html">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                about us
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section >
 
             <section class="about-section padding-top ">
                 <div class="container">
@@ -34,20 +36,20 @@ export default function About() {
                                 <div class="section-header-3 left-style m-3">
                                     <span class="cate">we are Boleto </span>
                                     <h2 class="title">Get to know us</h2>
-                                    <p style={{fontSize:17,padding:30}}>
-                                    Cinema connects people, acts as a starter of a conversation. It enhances imagination
-                                    and shows the entire world multiple perspectives and broaden our vision and
-                                    thinking. Most importantly, it connects different cultures and introduces us to the
-                                    various forms of art and adds unknown information and facts to our lives, It is
-                                    referred to the entire film industry, as well as the place designed for the
-                                    exhibition of movies, films, etc. </p>
-                                    </div>         
+                                    <p style={{ fontSize: 17, padding: 30 }}>
+                                        Cinema connects people, acts as a starter of a conversation. It enhances imagination
+                                        and shows the entire world multiple perspectives and broaden our vision and
+                                        thinking. Most importantly, it connects different cultures and introduces us to the
+                                        various forms of art and adds unknown information and facts to our lives, It is
+                                        referred to the entire film industry, as well as the place designed for the
+                                        exhibition of movies, films, etc. </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-5">
-                        <div class="event-about-content">
+                            <div class="event-about-content">
 
-                                <img  src="./assets/images/about/about01.png" alt="about" />
+                                <img src="./assets/images/about/about01.png" alt="about" />
 
                             </div>
                         </div>
@@ -76,7 +78,7 @@ export default function About() {
                                     <a href="./assets/images/gallery/gallery06.jpg" class="img-pop">
                                         <i class="flaticon-loupe"></i>
                                     </a>
-                                    <img src="./assets/images/gallery/cema1.jpg" alt="gallery" style={{width:287 , height:190}}/>
+                                    <img src="./assets/images/gallery/cema1.jpg" alt="gallery" style={{ width: 287, height: 190 }} />
                                 </div>
                             </div>
                             <div class="gallery-item two">
@@ -84,7 +86,7 @@ export default function About() {
                                     <a href="./assets/images/gallery/gallery13.jpg" class="img-pop">
                                         <i class="flaticon-loupe"></i>
                                     </a>
-                                    <img src="./assets/images/gallery/cema5.jpg" alt="gallery" style={{width:287 , height:270}} />
+                                    <img src="./assets/images/gallery/cema5.jpg" alt="gallery" style={{ width: 287, height: 270 }} />
                                 </div>
                             </div>
                         </div>
@@ -130,7 +132,7 @@ export default function About() {
                                             <a href="./assets/images/gallery/gallery10.jpg" class="img-pop">
                                                 <i class="flaticon-loupe"></i>
                                             </a>
-                                            <img src="./assets/images/gallery/cema3.jpg" alt="gallery" style={{width:287 , height:270}}/>
+                                            <img src="./assets/images/gallery/cema3.jpg" alt="gallery" style={{ width: 287, height: 270 }} />
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +163,7 @@ export default function About() {
                             <div class="speaker-item">
                                 <div class="speaker-thumb">
                                     <a href="event-speaker.html">
-                                        <img src="./assets/images/speaker/speaker01.jpg" alt="speaker" />
+                                        <img height="300px" src="./assets/images/speaker/abood.jpg" alt="speaker" />
                                     </a>
                                 </div>
                                 <div class="speaker-content">
@@ -170,14 +172,14 @@ export default function About() {
                                             Abd-alrhman
                                         </a>
                                     </h5>
-                                    <span>CO-FOUNDER, CEO</span>
+                                    <span>Manager</span>
                                 </div>
                             </div>
-                            
+
                             <div class="speaker-item">
                                 <div class="speaker-thumb">
                                     <a href="event-speaker.html">
-                                        <img src="./assets/images/speaker/speaker03.jpg" alt="speaker" />
+                                        <img height="300px" src="./assets/images/speaker/ghida.png" alt="speaker" />
                                     </a>
                                 </div>
                                 <div class="speaker-content">
@@ -192,7 +194,7 @@ export default function About() {
                             <div class="speaker-item">
                                 <div class="speaker-thumb">
                                     <a href="event-speaker.html">
-                                        <img src="./assets/images/speaker/speaker03.jpg" alt="speaker" />
+                                        <img height="300px" src="./assets/images/speaker/safa.png" alt="speaker" />
                                     </a>
                                 </div>
                                 <div class="speaker-content">
@@ -207,7 +209,7 @@ export default function About() {
                             <div class="speaker-item">
                                 <div class="speaker-thumb">
                                     <a href="event-speaker.html">
-                                        <img src="./assets/images/speaker/speaker04.jpg" alt="speaker" />
+                                        <img height="300px" src="./assets/images/speaker/nada.jpeg" alt="speaker" />
                                     </a>
                                 </div>
                                 <div class="speaker-content">
@@ -216,11 +218,11 @@ export default function About() {
                                             Nada
                                         </a>
                                     </h5>
-                                    <span>CO-FOUNDER, CEO</span>
+                                    <span> Manger assistant </span>
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="speaker-prev">
                             <i class="flaticon-double-right-arrows-angles"></i>
                         </div>
@@ -233,7 +235,7 @@ export default function About() {
 
 
 
-          
+
         </>
     );
 }

@@ -46,11 +46,11 @@ function Home() {
               Safe , secure and reliable ticketing . Your ticket to live
               entertainment!
             </h6>
-           
+
             <div class="form-group text-center">
-                                <NavLink to="/about"><input type="submit"  value="Read More" /></NavLink>
-                            </div>
-                            
+              <NavLink to="/about"><input type="submit" value="Read More" /></NavLink>
+            </div>
+
           </div >
         </div >
       </section >
@@ -262,7 +262,7 @@ function Home() {
             <p>{movie.description}</p>
           </div>
         );
-      })} */} 
+      })} */}
 
       < section className="movie-section padding-top padding-bottom" >
         <div className="container">
@@ -293,12 +293,12 @@ function Home() {
                                   movie.from == 2 ?
                                     <img
                                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                      height="540px"
+
                                     />
                                     :
                                     <img
                                       src={`http://127.0.0.1:8000/images/${movie.poster_path}`}
-                                      height="540px"
+                                      height="400px"
                                     />
                                 }
                               </NavLink>
@@ -455,23 +455,7 @@ function Home() {
         </div>
       </div >
 
-      <section>
-        <div className="newslater-section padding-bottom padding-top">
-          <div className="container">
-            <div className="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
-              <div className="newslater-wrapper">
-                <h5 className="cate">subscribe to Boleto </h5>
-                <h3 className="title">to get exclusive benifits</h3>
-                <form className="newslater-form">
-                  <input type="text" placeholder="Your Email Address" />
-                  <button type="submit">subscribe</button>
-                </form>
-                <p>We respect your privacy, so we never share your info</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
 
       <Helmet>
